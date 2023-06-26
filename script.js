@@ -11,11 +11,12 @@ function exibeJanela(janela) {
             document.querySelector("ion-icon").setAttribute("style", "display:none;")
             document.querySelector("#media-regular").setAttribute("style", "display:none;")
             let medias = document.querySelectorAll("#media-regular input")
-            medias[0].value = ""
-            medias[1].value = ""
+            for (let i = 0; i < medias.length; i++) {
+                medias[i].value = ""
+            }
             document.querySelector("#resultado").setAttribute("style", "display:none;")
+            exibeJanela('semanais-esconde')
             document.querySelector("#inicio").setAttribute("style", "display:initial;")
-            
             break
         case "exame":
             alert("Em construção...")
@@ -35,12 +36,14 @@ function exibeJanela(janela) {
             document.querySelector("#media-avaliativas-semanais").setAttribute("style", "display:none;")
             document.querySelector("#inserir-individualmente").setAttribute("style", "display:none;")
             document.querySelector("#exibir-notas-individuais").setAttribute("style", "display:block;")
+            document.querySelector("#avaliativas-texto").innerHTML = "Insira individualmente a nota de cada <b>avaliativa semanal</b>"
+
             break
         case "semanais-esconde":
             document.querySelector("#media-avaliativas-semanais").setAttribute("style", "display:inline;")
             document.querySelector("#inserir-individualmente").setAttribute("style", "display:block;")
             document.querySelector("#exibir-notas-individuais").setAttribute("style", "display:none;")
-
+            document.querySelector("#avaliativas-texto").innerHTML = "Insira sua média final das <strong>avaliativas semanais</strong>"
     }
 }
 
@@ -69,16 +72,18 @@ function calculaRegular() {
 function resultado(nota) {
     exibeJanela("resultado")
     const resultadoTexto = document.querySelector("#resultado-txt")
-    const resultadonota = document.querySelector("#resultado-nota")
-    const resultadodesc = document.querySelector("#resultado-desc")
+    const resultadoNota = document.querySelector("#resultado-nota")
+    const resultadoDesc = document.querySelector("#resultado-desc")
     if (nota >= 5) {
         resultadoTexto.textContent = "Parabéns!!!"
-        resultadonota.textContent = "Média final: " + nota
-        resultadodesc.textContent = "Você foi aprovado(a)!"
+        resultadoNota.textContent = "Média final: " + nota
+        resultadoNota.setAttribute("style", "color:green;")
+        resultadoDesc.textContent = "Você foi aprovado(a)!"
     }else{
         resultadoTexto.textContent = "Que pena ..."
-        resultadonota.textContent = "Média final: " + nota
-        resultadodesc.textContent = "VVocê ficou de exame.ocê foi aprovado(a)!"
+        resultadoNota.textContent = "Média final: " + nota
+        resultadoNota.setAttribute("style", "color:red;")
+        resultadoDesc.textContent = "Você ficou de exame."
     }
 
 }

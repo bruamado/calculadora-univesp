@@ -7,28 +7,28 @@
     /* border: 2px solid black; */
     border-radius: 0px 0px 10px 10px;
     margin: 64px 24px 48px;
-    height: 80vh;
+    min-height: 80vh;
     background-color: rgba(160, 160, 160, 0.24);
 }
 
 header {
     position: absolute;
-    top: -48px;
+    top: -40px;
     width: 100%;
     background-color: black;
     border-radius: 10px;
 }
 
 header h1 {
-    font-size: 1.6em;
+    font-size: 1.2em;
     margin: 10px;
     color: white
 }
 
-ion-icon {
+#back {
     display: none;
     font-size: 50px;
-    color: red;
+    color: rgb(124, 124, 124);
     position: absolute;
     top: 0;
     left: 0;
@@ -51,7 +51,7 @@ ion-icon {
     margin: 20px auto;
     height: 50px;
     border-radius: 20px;
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 /* Calcular Média Regular */
@@ -93,7 +93,7 @@ ion-icon {
 
 #media-regular button {
     display: block;
-    margin: 20px auto 0;
+    margin: 24px auto 24px;
     height: 50px;
     font-size: large;
     font-weight: bold;
@@ -117,6 +117,10 @@ ion-icon {
     /* display: block; -> Para medias semanais individuais */
 }
 
+#exibir-notas-individuais input {
+    text-align: center;
+}
+
 /* Resultado */
 
 #resultado {
@@ -130,4 +134,9 @@ ion-icon {
     margin: 50px auto;
     border-radius: 20px;
     font-size: 1.5em;
+}
+
+#resultado-nota {
+    padding: 20px;
+    background-color: gainsboro;
 }
