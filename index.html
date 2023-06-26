@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora UNIVESP</title>
+</head>
+<body>
+    <div id="calculadora-app">
+        <header>
+            <h1>Calculadora de Média</h1>
+            <!-- Logotipo da UNIVESP -->
+        </header>
+        <ion-icon name="arrow-back-outline" onclick="exibeJanela('inicio')"></ion-icon>
+        <div id="display">
+            <div id="inicio">
+                <p>O que você deseja calcular?</p>
+                <button type="button" id="b-regular" onclick="exibeJanela('regular')">Média Final REGULAR</button>
+                <button type="button" id="b-exame" onclick="exibeJanela('exame')">Média Final EXAME</button>
+            </div>
+            <div id="media-regular">
+                <p>Insira a nota da <strong>prova</strong></p>
+                <input type="number" class="medias" name="nota-prova" id="nota-prova" oninput="limitLength(this)" maxlength = "3"/>
+                <!-- <input type="number" name="nota-prova" id="nota-prova"> -->
+                <p>Insira sua média final das <strong>avaliativas semanais</strong></p>
+                <p id="inserir-individualmente" onclick="exibeJanela('semanais-exibe')"><em>ou clique aqui para inserir a nota de cada semana individualmente</em></p>
+                <!-- <input type="number" name="media-avaliativas-semanais" id="media-avaliativas-semanais" maxlength="3"> -->
+                <input type="number" class="medias" name="media-avaliativas-semanais" id="media-avaliativas-semanais" oninput="limitLength(this)" maxlength = "3"/>
+                <div id="exibir-notas-individuais">
+                    <p id="recolher-semanas" onclick="exibeJanela('semanais-esconde')"><em>Recolher</em></p>
+                    <p>
+                        Avaliativa semana 1:
+                        <input type="number" class="semanais" name="avaliativa-semana1" id="avaliativa-semana1" oninput="limitLength(this)" maxlength = "3"/>
+                    </p>
+                    <p>
+                        Avaliativa semana 2:
+                        <input type="number" class="semanais" name="avaliativa-semana2" id="avaliativa-semana2" oninput="limitLength(this)" maxlength = "3"/>
+                    </p>
+                    <p>
+                        Avaliativa semana 3:
+                        <input type="number" class="semanais" name="avaliativa-semana3" id="avaliativa-semana3" oninput="limitLength(this)" maxlength = "3"/>
+                    </p>
+                    <p>
+                        Avaliativa semana 4:
+                        <input type="number" class="semanais" name="avaliativa-semana4" id="avaliativa-semana4" oninput="limitLength(this)" maxlength = "3"/>
+                    </p>
+                    <p>
+                        Avaliativa semana 5:
+                        <input type="number" class="semanais" name="avaliativa-semana5" id="avaliativa-semana5" oninput="limitLength(this)" maxlength = "3"/>
+                    </p>
+                    <p>
+                        Avaliativa semana 6:
+                        <input type="number" class="semanais" name="avaliativa-semana6" id="avaliativa-semana6" oninput="limitLength(this)" maxlength = "3"/>
+                    </p>
+                    <p>
+                        Avaliativa semana 7:
+                        <input type="number" class="semanais" name="avaliativa-semana7" id="avaliativa-semana7" oninput="limitLength(this)" maxlength = "3"/>
+                    </p>
+                </div>
+
+                <button type="button" id="calcula-regular" onclick="calculaRegular()">Calcular</button>
+            </div>
+            <div id="resultado">
+                <h1 id="resultado-txt">Parabéns!</h1>
+                <h2 id="resultado-nota">Média final: 10</h2>
+                <p id="resultado-desc">Você foi aprovado(a)!</p>
+                <button type="button" id="reset" onclick="exibeJanela('inicio')">Voltar</button>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

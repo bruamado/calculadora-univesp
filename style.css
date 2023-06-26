@@ -1,0 +1,133 @@
+#calculadora-app {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* border: 2px solid black; */
+    border-radius: 0px 0px 10px 10px;
+    margin: 64px 24px 48px;
+    height: 80vh;
+    background-color: rgba(160, 160, 160, 0.24);
+}
+
+header {
+    position: absolute;
+    top: -48px;
+    width: 100%;
+    background-color: black;
+    border-radius: 10px;
+}
+
+header h1 {
+    font-size: 1.6em;
+    margin: 10px;
+    color: white
+}
+
+ion-icon {
+    display: none;
+    font-size: 50px;
+    color: red;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 8px;
+}
+
+/* Início */
+#inicio {
+    display: none;
+    display: block;
+}
+
+#inicio p {
+    text-align: center;
+    font-size: 2em;
+}
+
+#inicio button {
+    display: block;
+    margin: 20px auto;
+    height: 50px;
+    border-radius: 20px;
+    font-size: 1.5em;
+}
+
+/* Calcular Média Regular */
+#media-regular {
+    display: none;
+    /* display: block; */
+    text-align: center;
+}
+
+#media-regular p {
+    margin: 0px;
+}
+
+#media-regular .medias {
+    width: 50px;
+    height: 2em;
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+    border-radius: 5px;
+    margin-top: 16px;
+    margin-bottom: 86px;
+}
+
+#media-avaliativas-semanais {
+    display: inline;
+    /* display: none; */
+    /* display: inline; -> para media direto */
+}
+
+#inserir-individualmente {
+    display: block;
+    /* display: none; */
+    /* display: block; -> para media direto */
+    padding: 0px 30px;
+    text-decoration: underline;
+    line-height: 0.8;
+}
+
+#media-regular button {
+    display: block;
+    margin: 20px auto 0;
+    height: 50px;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+#media-regular .semanais {
+    height: 2em;
+    width: 50px;
+    border-radius: 5px;
+    font-size: 1.5em;
+    margin: 4px;
+    font-size: large;
+    font-weight: bold;
+}
+
+#exibir-notas-individuais {
+    display: none;
+    /* display: block; */
+    /* display: block; -> Para medias semanais individuais */
+}
+
+/* Resultado */
+
+#resultado {
+    display: block;
+    display: none;
+    text-align: center;
+}
+
+#resultado button {
+    height: 50px;
+    margin: 50px auto;
+    border-radius: 20px;
+    font-size: 1.5em;
+}
