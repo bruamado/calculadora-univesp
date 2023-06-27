@@ -1,13 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
 #calculadora-app {
     display: flex;
     position: relative;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     flex-direction: column;
     /* border: 2px solid black; */
     border-radius: 0px 0px 10px 10px;
-    margin: 64px 24px 48px;
-    min-height: 80vh;
+    margin: 64px 28px 64px;
+    /* min-height: 80vh; */
     background-color: rgba(160, 160, 160, 0.24);
 }
 
@@ -35,9 +41,13 @@ header h1 {
     margin: 8px;
 }
 
+#display {
+    display: flex;
+    padding-top: 24px;
+}
+
 /* Início */
 #inicio {
-    display: none;
     display: block;
 }
 
@@ -117,6 +127,11 @@ header h1 {
     /* display: block; -> Para medias semanais individuais */
 }
 
+#exibir-notas-individuais * {
+    outline: 3px solid gainsboro;
+    animation: slide-down 2s forwards;
+}
+
 #exibir-notas-individuais input {
     text-align: center;
 }
@@ -140,3 +155,13 @@ header h1 {
     padding: 20px;
     background-color: gainsboro;
 }
+
+/* animation */
+@keyframes slide-down {
+    from {
+        outline: 3px solid gainsboro;
+    }
+    to {
+        outline: initial;
+    }
+  }
