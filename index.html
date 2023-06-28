@@ -14,14 +14,14 @@
             </h1>
             <img src="./assets/logo-univesp.png" alt="">
         </header>
-        <ion-icon id="back" name="arrow-back-outline" onclick="exibeJanela('inicio')"></ion-icon>
         <div id="display">
-            <div id="inicio">
+            <ion-icon id="back" name="arrow-back-outline" onclick="exibeJanela('inicio')"></ion-icon>
+            <div id="inicio" class="janela">
                 <p>O que você deseja calcular?</p>
                 <button type="button" id="b-regular" onclick="exibeJanela('regular')">Média Final REGULAR</button>
                 <button type="button" id="b-exame" onclick="exibeJanela('exame')">Média Final EXAME</button>
             </div>
-            <div id="media-regular">
+            <div id="media-regular" class="janela">
                 <p>Insira a nota da <strong>prova</strong></p>
                 <input type="number" class="input" name="nota-prova-regular" id="nota-prova-regular" oninput="limitLength(this)" maxlength = "3"/>
                 <!-- <input type="number" name="nota-prova" id="nota-prova"> -->
@@ -64,7 +64,7 @@
 
                 <button type="button" class="botao" id="calcula-regular" onclick="calculaRegular()">Calcular</button>
             </div>
-            <div id="media-exame">
+            <div id="media-exame" class="janela">
                 <p id="exame-texto">Insira sua <strong>média final</strong> que te deixou de exame</p>
                 <input type="number" class="input" name="media-final-exame" id="media-final-exame" oninput="limitLength(this)" maxlength = "3"/>
 
@@ -73,7 +73,7 @@
 
                 <button type="button" class="botao" id="calcula-exame" onclick="calculaExame()">Calcular</button>
             </div>
-            <div id="resultado">
+            <div id="resultado" class="janela">
                 <h1 id="resultado-txt">Parabéns!</h1>
                 <h2 id="resultado-nota">Média final: 10</h2>
                 <p id="resultado-desc">Você foi aprovado(a)!</p>

@@ -38,6 +38,10 @@
     border: 2px solid black;
 }
 
+.janela {
+    padding-bottom: 24px;
+}
+
 header {
     padding: 8px;
     position: absolute;
@@ -61,25 +65,27 @@ header img {
     margin-left: auto;
 }
 
+
+#display {
+    display: flex;
+    flex-direction: column;
+}
+
 #back {
     display: none;
     font-size: 44px;
     color: rgb(124, 124, 124);
-    position: absolute;
+    /* position: absolute;
     top: 0;
-    left: 0;
-    margin: 4px;
-}
-
-#display {
-    display: flex;
-    padding: 56px 0 24px;
+    left: 0; */
+    padding: 32px 8px 0;
 }
 
 /* Início */
 #inicio {
     /* display: none; */
     display: block;
+    padding-top: 56px;
 }
 
 #inicio p {
