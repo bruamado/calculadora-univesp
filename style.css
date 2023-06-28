@@ -12,8 +12,8 @@
     flex-direction: column;
     /* border: 2px solid black; */
     border-radius: 0px 0px 10px 10px;
-    margin: 64px 28px 64px;
-    /* min-height: 80vh; */
+    margin: 64px 28px 0;
+    min-height: 60vh;
     background-color: rgba(160, 160, 160, 0.24);
 }
 
@@ -155,6 +155,29 @@ header h1 {
     padding: 20px;
     background-color: gainsboro;
 }
+
+footer {
+    margin: 10px;
+    display: inline;
+}
+
+footer p{
+    text-align: center;
+}
+
+#social-links {
+    font-size: 24px;
+    margin: 12px;
+    text-align: center;
+}
+
+#social-links a {
+    text-align: center;
+    border-radius: 50%;
+    padding: 16px; 
+    color: black;
+    text-decoration: none;
+  }
 
 /* animation */
 @keyframes slide-down {
