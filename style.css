@@ -13,8 +13,29 @@
     /* border: 2px solid black; */
     border-radius: 0px 0px 10px 10px;
     margin: 64px 28px 0;
-    min-height: 60vh;
+    /* min-height: 60vh; */
     background-color: rgba(160, 160, 160, 0.24);
+}
+
+.input {
+    width: 50px;
+    height: 1.5em;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    border-radius: 5px;
+    margin-top: 16px;
+    margin-bottom: 86px;
+}
+
+.botao {
+    display: block;
+    margin: 24px auto 24px;
+    height: 50px;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 2px solid black;
 }
 
 header {
@@ -33,21 +54,22 @@ header h1 {
 
 #back {
     display: none;
-    font-size: 50px;
+    font-size: 44px;
     color: rgb(124, 124, 124);
     position: absolute;
     top: 0;
     left: 0;
-    margin: 8px;
+    margin: 4px;
 }
 
 #display {
     display: flex;
-    padding-top: 24px;
+    padding: 56px 0 24px;
 }
 
 /* Início */
 #inicio {
+    /* display: none; */
     display: block;
 }
 
@@ -75,17 +97,6 @@ header h1 {
     margin: 0px;
 }
 
-#media-regular .medias {
-    width: 50px;
-    height: 2em;
-    text-align: center;
-    font-weight: bold;
-    font-size: large;
-    border-radius: 5px;
-    margin-top: 16px;
-    margin-bottom: 86px;
-}
-
 #media-avaliativas-semanais {
     display: inline;
     /* display: none; */
@@ -101,24 +112,14 @@ header h1 {
     line-height: 0.8;
 }
 
-#media-regular button {
-    display: block;
-    margin: 24px auto 24px;
-    height: 50px;
-    font-size: large;
-    font-weight: bold;
-    border-radius: 10px;
-    border: 2px solid black;
-}
-
-#media-regular .semanais {
-    height: 2em;
-    width: 50px;
-    border-radius: 5px;
-    font-size: 1.5em;
+#exibir-notas-individuais input {
+    /* height: 2em; */
+    /* width: 50px; */
+    /* border-radius: 5px; */
+    /* font-size: 1.5em; */
     margin: 4px;
-    font-size: large;
-    font-weight: bold;
+    /* font-size: large; */
+    /* font-weight: bold; */
 }
 
 #exibir-notas-individuais {
@@ -136,22 +137,22 @@ header h1 {
     text-align: center;
 }
 
-/* Resultado */
-
-#resultado {
-    display: block;
+/* Calcular Média Regular */
+#media-exame {
     display: none;
     text-align: center;
 }
 
-#resultado button {
-    height: 50px;
-    margin: 50px auto;
-    border-radius: 20px;
-    font-size: 1.5em;
+/* Resultado */
+
+#resultado {
+    /* display: block; */
+    display: none;
+    text-align: center;
 }
 
 #resultado-nota {
+    margin: 40px 0;
     padding: 20px;
     background-color: gainsboro;
 }
@@ -182,7 +183,7 @@ footer p{
 /* animation */
 @keyframes slide-down {
     from {
-        outline: 3px solid gainsboro;
+        outline: 2px solid gainsboro;
     }
     to {
         outline: initial;
