@@ -39,17 +39,26 @@
 }
 
 header {
+    padding: 8px;
     position: absolute;
-    top: -40px;
+    display: flex;
+    top: -28px;
     width: 100%;
     background-color: black;
     border-radius: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
 header h1 {
+    text-align: center;
     font-size: 1.2em;
-    margin: 10px;
-    color: white
+    color: white;
+    padding: 0 8px;
+}
+
+header img {
+    margin-left: auto;
 }
 
 #back {
