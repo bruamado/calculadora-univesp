@@ -4,6 +4,9 @@
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Freehand&family=Gamja+Flower&family=Kalam:wght@300;400&display=swap" rel="stylesheet">
     <title>Calculadora UNIVESP</title>
 </head>
 <body>
@@ -17,15 +20,15 @@
         <div id="display">
             <ion-icon id="back" name="arrow-back-outline" onclick="exibeJanela('inicio')"></ion-icon>
             <div id="inicio" class="janela">
-                <p>O que você deseja calcular?</p>
-                <button type="button" id="b-regular" onclick="exibeJanela('regular')">Média Final REGULAR</button>
-                <button type="button" id="b-exame" onclick="exibeJanela('exame')">Média Final EXAME</button>
+                <p class="texto">O que você deseja calcular?</p>
+                <button type="button" id="b-regular" class="botao" onclick="exibeJanela('regular')">Média Final REGULAR</button>
+                <button type="button" id="b-exame" class="botao" onclick="exibeJanela('exame')">Média Final EXAME</button>
             </div>
             <div id="media-regular" class="janela">
-                <p>Insira a nota da <strong>prova</strong></p>
+                <p class="texto">Insira a <strong>nota da prova</strong></p>
                 <input type="number" class="input" name="nota-prova-regular" id="nota-prova-regular" oninput="limitLength(this)" maxlength = "3"/>
                 <!-- <input type="number" name="nota-prova" id="nota-prova"> -->
-                <p id="avaliativas-texto">Insira sua média final das <strong>avaliativas semanais</strong></p>
+                <p id="avaliativas-texto" class="texto">Insira sua média final das <strong>avaliativas semanais</strong></p>
                 <p id="inserir-individualmente" onclick="exibeJanela('semanais-exibe')"><em>ou clique aqui para inserir a nota de cada semana individualmente</em></p>
                 <!-- <input type="number" name="media-avaliativas-semanais" id="media-avaliativas-semanais" maxlength="3"> -->
                 <input type="number" class="input" name="media-avaliativas-semanais" id="media-avaliativas-semanais" oninput="limitLength(this)" maxlength = "3"/>
@@ -65,18 +68,18 @@
                 <button type="button" class="botao" id="calcula-regular" onclick="calculaRegular()">Calcular</button>
             </div>
             <div id="media-exame" class="janela">
-                <p id="exame-texto">Insira sua <strong>média final</strong> que te deixou de exame</p>
+                <p id="exame-texto" class="texto">Insira sua <strong>média final</strong> que te deixou de exame</p>
                 <input type="number" class="input" name="media-final-exame" id="media-final-exame" oninput="limitLength(this)" maxlength = "3"/>
 
-                <p>Insira a nota da <strong>prova de exame</strong></p>
+                <p class="texto">Insira a <strong>nota da prova de exame</strong></p>
                 <input type="number" class="input" name="nota-prova-exame" id="nota-prova-exame" oninput="limitLength(this)" maxlength = "3"/>
 
                 <button type="button" class="botao" id="calcula-exame" onclick="calculaExame()">Calcular</button>
             </div>
             <div id="resultado" class="janela">
                 <h1 id="resultado-txt">Parabéns!</h1>
-                <h2 id="resultado-nota">Média final: 10</h2>
-                <p id="resultado-desc">Você foi aprovado(a)!</p>
+                <h2 id="resultado-nota" >Média final: 10</h2>
+                <p id="resultado-desc" class="texto">Você foi aprovado(a)!</p>
             </div>
         </div>
     </div>

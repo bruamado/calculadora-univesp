@@ -25,7 +25,7 @@
     font-size: 1.5em;
     border-radius: 5px;
     margin-top: 16px;
-    margin-bottom: 86px;
+    margin-bottom: 48px;
 }
 
 .botao {
@@ -36,10 +36,18 @@
     font-weight: bold;
     border-radius: 10px;
     border: 2px solid black;
+    padding: 0 12px;
 }
 
 .janela {
     padding-bottom: 24px;
+}
+
+.texto {
+    font-size: 24px;
+    font-family: 'Kalam', cursive;
+    line-height: 1;
+    padding: 8px;
 }
 
 header {
@@ -94,11 +102,7 @@ header img {
 }
 
 #inicio button {
-    display: block;
-    margin: 20px auto;
-    height: 50px;
-    border-radius: 20px;
-    font-size: 1em;
+    width: 80%;
 }
 
 /* Calcular Média Regular */
@@ -166,7 +170,17 @@ header img {
     text-align: center;
 }
 
+#resultado-txt {
+    font-family: 'Freehand', cursive;
+    /* font-weight: 300; */
+}
+
+#resultado-desc {
+    font-size: 28px;
+}
+
 #resultado-nota {
+    font-size: 36px;
     margin: 40px 0;
     padding: 20px;
     background-color: gainsboro;
@@ -178,6 +192,8 @@ footer {
 }
 
 footer p{
+    font-family: 'Gamja Flower', cursive;
+    font-size: 24px;
     text-align: center;
 }
 

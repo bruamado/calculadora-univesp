@@ -69,18 +69,19 @@ function calculaRegular() {
     }
     let notaProva = parseFloat(document.querySelector("#nota-prova-regular").value)
     let mediaFinal = (notaProva * 0.6) + (notaAvaliativas * 0.4)
-    resultado(mediaFinal)
+    resultado("regular", mediaFinal)
 }
 
 function calculaExame() {
     let mediaFinalExame = parseFloat(document.querySelector("#media-final-exame").value)
     let provaExame = parseFloat(document.querySelector("#nota-prova-exame").value)
     let mediaFinal = (mediaFinalExame + provaExame) / 2
-    resultado(mediaFinal)
+    resultado("exame", mediaFinal)
 }
 
-function resultado(nota) {
+function resultado(tipo, nota) {
     exibeJanela("resultado")
+    let consequencia = (tipo == "regular") ? "exame" : "DP"
     const resultadoTexto = document.querySelector("#resultado-txt")
     const resultadoNota = document.querySelector("#resultado-nota")
     const resultadoDesc = document.querySelector("#resultado-desc")
@@ -93,7 +94,7 @@ function resultado(nota) {
     }else{
         resultadoTexto.textContent = "Que pena ..."
         resultadoNota.setAttribute("style", "color:red;")
-        resultadoDesc.textContent = "Você ficou de exame."
+        resultadoDesc.textContent = "Você ficou de "+ consequencia +"."
     }
 
 }
