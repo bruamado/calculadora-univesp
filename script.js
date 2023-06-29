@@ -5,6 +5,30 @@ function limitLength(element) {
     if (element.value.length > element.maxLength) element.value = element.value.slice(0, element.maxLength)
 }
 
+function decimalValidation(element) {    
+    /* alert(element.name) */
+    if (element.value[0] == "," || element.value[0] == "."){
+        element.value = "0" + element.value
+    }
+
+    let inputFloat = parseFloat(element.value).toFixed(2)
+
+    if (element.name == "media-final-exame") { // Calculo de média final de exame
+        if (inputFloat < 0 || inputFloat >= 5) {
+            alert("Insira uma nota de 0 a 5. Exemplo: 3,5\nSua média não pode ser maior ou igual a 5, senão você não estaria de exame.")
+            element.value = ""
+            element.focus()
+        }
+    }else{
+        if (inputFloat < 0 || inputFloat > 10) {
+            alert("Insira uma nota de 0 a 10. Exemplo: 7,5")
+            element.value = ""
+            element.focus()
+        }
+    }
+}
+
+
 function exibeJanela(janela) {
     switch (janela) {
         case "inicio":

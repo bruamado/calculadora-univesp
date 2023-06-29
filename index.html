@@ -27,42 +27,42 @@
             </div>
             <div id="media-regular" class="janela">
                 <p class="texto">Insira a <strong>nota da prova</strong></p>
-                <input type="number" class="input" name="nota-prova-regular" id="nota-prova-regular" oninput="limitLength(this)" maxlength = "3"/>
+                <input type="number" class="input" name="nota-prova-regular" id="nota-prova-regular" onchange="decimalValidation(this)" maxlength="4"/>
                 <!-- <input type="number" name="nota-prova" id="nota-prova"> -->
                 <p id="avaliativas-texto" class="texto">Insira sua média final das <strong>avaliativas semanais</strong></p>
                 <button id="inserir-individualmente" class="txt-button" onclick="exibeJanela('semanais-exibe')"><em>ou clique aqui para inserir a nota de cada semana individualmente</em></button>
                 <!-- <input type="number" name="media-avaliativas-semanais" id="media-avaliativas-semanais" maxlength="3"> -->
-                <input type="number" class="input" name="media-avaliativas-semanais" id="media-avaliativas-semanais" oninput="limitLength(this)" maxlength = "3"/>
+                <input type="number" class="input" name="media-avaliativas-semanais" id="media-avaliativas-semanais" onchange="decimalValidation(this)" maxlength="4"/>
                 <div id="exibir-notas-individuais">
                     <!-- <p id="recolher-semanas" onclick="exibeJanela('semanais-esconde')"><em>Recolher</em></p> -->
                     <ion-icon id="recolher-semanas" name="caret-up-outline" onclick="exibeJanela('semanais-esconde')"></ion-icon>
                     <p>
                         Avaliativa semana 1:
-                        <input type="number" class="input" name="avaliativa-semana1" id="avaliativa-semana1" oninput="limitLength(this)" maxlength = "3"/>
+                        <input type="number" class="input" name="avaliativa-semana1" id="avaliativa-semana1" onchange="decimalValidation(this)" maxlength="4"/>
                     </p>
                     <p>
                         Avaliativa semana 2:
-                        <input type="number" class="input" name="avaliativa-semana2" id="avaliativa-semana2" oninput="limitLength(this)" maxlength = "3"/>
+                        <input type="number" class="input" name="avaliativa-semana2" id="avaliativa-semana2" onchange="decimalValidation(this)" maxlength="4"/>
                     </p>
                     <p>
                         Avaliativa semana 3:
-                        <input type="number" class="input" name="avaliativa-semana3" id="avaliativa-semana3" oninput="limitLength(this)" maxlength = "3"/>
+                        <input type="number" class="input" name="avaliativa-semana3" id="avaliativa-semana3" onchange="decimalValidation(this)" maxlength="4"/>
                     </p>
                     <p>
                         Avaliativa semana 4:
-                        <input type="number" class="input" name="avaliativa-semana4" id="avaliativa-semana4" oninput="limitLength(this)" maxlength = "3"/>
+                        <input type="number" class="input" name="avaliativa-semana4" id="avaliativa-semana4" onchange="decimalValidation(this)" maxlength="4"/>
                     </p>
                     <p>
                         Avaliativa semana 5:
-                        <input type="number" class="input" name="avaliativa-semana5" id="avaliativa-semana5" oninput="limitLength(this)" maxlength = "3"/>
+                        <input type="number" class="input" name="avaliativa-semana5" id="avaliativa-semana5" onchange="decimalValidation(this)" maxlength="4"/>
                     </p>
                     <p>
                         Avaliativa semana 6:
-                        <input type="number" class="input" name="avaliativa-semana6" id="avaliativa-semana6" oninput="limitLength(this)" maxlength = "3"/>
+                        <input type="number" class="input" name="avaliativa-semana6" id="avaliativa-semana6" onchange="decimalValidation(this)" maxlength="4"/>
                     </p>
                     <p>
                         Avaliativa semana 7:
-                        <input type="number" class="input" name="avaliativa-semana7" id="avaliativa-semana7" oninput="limitLength(this)" maxlength = "3"/>
+                        <input type="number" class="input" name="avaliativa-semana7" id="avaliativa-semana7" onchange="decimalValidation(this)" maxlength="4"/>
                     </p>
                 </div>
 
@@ -70,10 +70,10 @@
             </div>
             <div id="media-exame" class="janela">
                 <p id="exame-texto" class="texto">Insira sua <strong>média final</strong> que te deixou de exame</p>
-                <input type="number" class="input" name="media-final-exame" id="media-final-exame" oninput="limitLength(this)" maxlength = "3"/>
+                <input type="number" class="input" name="media-final-exame" id="media-final-exame" onchange="decimalValidation(this)" maxlength="4"/>
 
                 <p class="texto">Insira a <strong>nota da prova de exame</strong></p>
-                <input type="number" class="input" name="nota-prova-exame" id="nota-prova-exame" oninput="limitLength(this)" maxlength = "3"/>
+                <input type="number" class="input" name="nota-prova-exame" id="nota-prova-exame" onchange="decimalValidation(this)" maxlength="4"/>
 
                 <button type="button" class="botao" id="calcula-exame" onclick="calculaExame()">Calcular</button>
             </div>
@@ -112,6 +112,7 @@
     </footer>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
