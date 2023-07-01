@@ -1,30 +1,49 @@
 /* Limita a quantidade de caracteres no input de numbers */
 const html = document.documentElement
 
-function limitLength(element) {
-    if (element.value.length > element.maxLength) element.value = element.value.slice(0, element.maxLength)
+function clearInput(element) {
+    element.value = ""
 }
 
-function decimalValidation(element) {    
-    /* alert(element.name) */
-    if (element.value[0] == "," || element.value[0] == "."){
-        element.value = "0" + element.value
-    }
+function hideError(element) {
+    element.setAttribute("style", "outline-color:revert;border:revert;")
+    let errorElementId = "#"+element.id+"-error"
+    let errorElement = document.querySelector(errorElementId)
+    errorElement.setAttribute("style", "display:none;")
+}
 
-    let inputFloat = parseFloat(element.value).toFixed(2)
+function showError(element) {
+    element.value = ""
+    element.setAttribute("style", "outline-color:red;border: 2px solid red;")
+    element.focus()
+    let errorElementId = "#"+element.id+"-error"
+    let errorElement = document.querySelector(errorElementId)
+    errorElement.setAttribute("style", "display:block;")
+}
 
-    if (element.name == "media-final-exame") { // Calculo de média final de exame
-        if (inputFloat < 0 || inputFloat >= 5) {
-            alert("Insira uma nota de 0 a 5. Exemplo: 3,5\nSua média não pode ser maior ou igual a 5, senão você não estaria de exame.")
-            element.value = ""
-            element.focus()
+function decimalValidation(element) {  
+    hideError(element)
+    if (element.value.trim() !== ""){
+        var regex = /^([1-9]\d*(\.|\,)\d*|0?(\.|\,)\d*[1-9]\d*|[0-9]\d*)$/gm
+        if (!(regex.test(element.value))) {
+            showError(element)
         }
-    }else{
-        if (inputFloat < 0 || inputFloat > 10) {
-            alert("Insira uma nota de 0 a 10. Exemplo: 7,5")
-            element.value = ""
-            element.focus()
+    
+        if (element.value[0] == "," || element.value[0] == "."){
+            element.value = "0" + element.value
         }
+    
+        let inputFloat = parseFloat(element.value).toFixed(2)
+        if (element.name == "media-final-exame") { // Calculo de média final de exame
+            if (inputFloat < 0 || inputFloat >= 5) {
+                showError(element)
+            }
+        }else{
+            if (inputFloat < 0 || inputFloat > 10) {
+                showError(element)
+            }
+        }
+        element.value = parseFloat(element.value).toFixed(2)
     }
 }
 
@@ -35,7 +54,7 @@ function exibeJanela(janela) {
             document.querySelector("ion-icon").setAttribute("style", "display:none;")
             document.querySelector("#media-regular").setAttribute("style", "display:none;")
             document.querySelector("#media-exame").setAttribute("style", "display:none;")
-            let medias = document.querySelectorAll("#media-regular input")
+            let medias = document.querySelectorAll(".input")
             for (let i = 0; i < medias.length; i++) {
                 medias[i].value = ""
             }
