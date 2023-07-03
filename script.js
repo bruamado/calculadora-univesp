@@ -1,6 +1,3 @@
-/* Limita a quantidade de caracteres no input de numbers */
-const html = document.documentElement
-
 function clearInput(element) {
     element.value = ""
 }
@@ -174,8 +171,8 @@ function resultado(tipo, nota) {
     const resultadoTexto = document.querySelector("#resultado-txt")
     const resultadoNota = document.querySelector("#resultado-nota")
     const resultadoDesc = document.querySelector("#resultado-desc")
-
-    resultadoNota.textContent = "Média final: " + parseFloat(nota.toFixed(1))
+    let mediaFinal = nota.toFixed(2)
+    resultadoNota.textContent = "Média final: " + mediaFinal.replace(".", ",")
     if (nota >= 5) {
         resultadoTexto.textContent = "Parabéns!!!"
         resultadoNota.setAttribute("style", "color:green;")
