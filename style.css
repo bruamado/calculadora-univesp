@@ -106,11 +106,11 @@ header img {
 
 #back {
     display: none;
+    background: none;
+    border: none;
+    margin-right: auto;
     font-size: 44px;
     color: rgb(124, 124, 124);
-    /* position: absolute;
-    top: 0;
-    left: 0; */
     padding: 32px 8px 0;
 }
 
@@ -133,7 +133,6 @@ header img {
 /* Calcular Média Regular */
 #media-regular {
     display: none;
-    /* display: block; */
     text-align: center;
 }
 
@@ -141,48 +140,43 @@ header img {
     margin-bottom: 56px;
 }
 
-#media-regular p {
-    margin: 0px;
+#media-regular input {
+    display: block;
+    margin: 0 auto;
 }
 
-#media-avaliativas-semanais {
-    display: inline;
-    /* display: none; */
-    /* display: inline; -> para media direto */
+#media-regular > div > button {
+    margin-top: 0;
+    margin-bottom: 8px;
 }
 
-#avaliativas-texto {
-    padding-bottom: 0;
+#media-regular > button:focus-visible {
+    border: 3px solid gray;
 }
 
 #inserir-individualmente {
     display: block;
-    /* display: none; */
-    /* display: block; -> para media direto */
     padding: 0px 30px;
     text-decoration: underline;
     line-height: 0.8;
 }
 
 #exibir-notas-individuais input {
-    /* height: 2em; */
-    /* width: 50px; */
-    /* border-radius: 5px; */
-    /* font-size: 1.5em; */
+    display: inline;
     margin: 4px;
-    /* font-size: large; */
-    /* font-weight: bold; */
 }
 
 #exibir-notas-individuais {
     display: none;
-    /* display: block; */
-    /* display: block; -> Para medias semanais individuais */
 }
 
 #exibir-notas-individuais * {
     outline: 3px solid gainsboro;
     animation: slide-down 2s forwards;
+}
+
+#exibir-notas-individuais > div {
+    margin: 0 auto;
 }
 
 #exibir-notas-individuais input {
@@ -199,17 +193,20 @@ header img {
     margin-bottom: 56px;
 }
 
+#media-exame input {
+    display: block;
+    margin: 0 auto;
+}
+
 /* Resultado */
 
 #resultado {
-    /* display: block; */
     display: none;
     text-align: center;
 }
 
 #resultado-txt {
     font-family: 'Freehand', cursive;
-    /* font-weight: 300; */
 }
 
 #resultado-desc {

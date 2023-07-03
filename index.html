@@ -19,108 +19,110 @@
             <img src="./assets/logo-univesp.png" alt="Logotipo da Universidade Virtual do Estado de São Paulo">
         </header>
         <div id="display">
-            <ion-icon id="back" name="arrow-back-outline" onclick="exibeJanela('inicio')"></ion-icon>
+            <button id="back">
+                <ion-icon name="arrow-back-outline" onclick="exibeJanela('inicio')"></ion-icon>
+            </button>
+
             <div id="inicio" class="janela">
                 <p class="texto">O que você deseja calcular?</p>
                 <button type="button" id="b-regular" class="botao" onclick="exibeJanela('regular')">Média Final REGULAR</button>
                 <button type="button" id="b-exame" class="botao" onclick="exibeJanela('exame')">Média Final EXAME</button>
             </div>
-            <div id="media-regular" class="janela">
+            <form id="media-regular" class="janela">
 
                 <div>
-                    <p class="texto">Insira a <strong>nota da prova</strong></p>
-                    <input type="number" class="input" name="nota-prova-regular" id="nota-prova-regular" onfocus="clearInput(this)" onchange="decimalValidation(this)" maxlength="4"/>
+                    <label for="nota-prova-regular" class="texto">Insira a <strong>nota da prova</strong></label>
+                    <input type="number" class="input" name="nota-prova-regular" id="nota-prova-regular" onfocus="clearInput(this)" pattern="^([1-9]\d*(\.|\,)\d*|0?(\.|\,)\d*[1-9]\d*|[0-9]\d*)$" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
                     <div class="input-error" id="nota-prova-regular-error">
                         <p>Insira um valor válido de 0 a 10</p>
                     </div>
                 </div>
 
                 <div>
-                    <p id="avaliativas-texto" class="texto">Insira sua média final das <strong>avaliativas semanais</strong></p>
-                    <button id="inserir-individualmente" class="txt-button" onclick="exibeJanela('semanais-exibe')"><em>ou clique aqui para inserir a nota de cada semana individualmente</em></button>
-                    <input type="number" class="input" name="media-avaliativas-semanais" id="media-avaliativas-semanais" onfocus="clearInput(this)" onchange="decimalValidation(this)" maxlength="4"/>
+                    <label for="media-avaliativas-semanais" id="avaliativas-texto" class="texto">Insira sua média final das <strong>avaliativas semanais</strong></label>
+                    <button type="button" id="inserir-individualmente" class="txt-button" onclick="exibeJanela('semanais-exibe')"><em>ou clique aqui para inserir a nota de cada semana individualmente</em></button>
+                    <input type="number" class="input" name="media-avaliativas-semanais" id="media-avaliativas-semanais" onfocus="clearInput(this)" pattern="^([1-9]\d*(\.|\,)\d*|0?(\.|\,)\d*[1-9]\d*|[0-9]\d*)$" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
                     <div class="input-error" id="media-avaliativas-semanais-error">
                         <p>Insira um valor válido de 0 a 10</p>
                     </div>
                     <div id="exibir-notas-individuais">
                         <!-- <p id="recolher-semanas" onclick="exibeJanela('semanais-esconde')"><em>Recolher</em></p> -->
                         <ion-icon id="recolher-semanas" name="caret-up-outline" onclick="exibeJanela('semanais-esconde')"></ion-icon>
-                        <p>
-                            Avaliativa semana 1:
-                            <input type="number" class="input" name="avaliativa-semana1" id="avaliativa-semana1" onfocus="clearInput(this)" onchange="decimalValidation(this)" maxlength="4"/>
+                        <div>
+                            <label for="avaliativa-semana1">Avaliativa semana 1:</label>
+                            <input type="number" class="input" name="avaliativa-semana1" id="avaliativa-semana1" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana1-error">
                                 <p>Insira um valor válido de 0 a 10</p>
                             </div>
-                        </p>
-                        <p>
-                            Avaliativa semana 2:
-                            <input type="number" class="input" name="avaliativa-semana2" id="avaliativa-semana2" onfocus="clearInput(this)" onchange="decimalValidation(this)" maxlength="4"/>
+                        </div>
+                        <div>
+                            <label for="avaliativa-semana2">Avaliativa semana 2:</label>
+                            <input type="number" class="input" name="avaliativa-semana2" id="avaliativa-semana2" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana2-error">
                                 <p>Insira um valor válido de 0 a 10</p>
                             </div>
-                        </p>
-                        <p>
-                            Avaliativa semana 3:
-                            <input type="number" class="input" name="avaliativa-semana3" id="avaliativa-semana3" onfocus="clearInput(this)" onchange="decimalValidation(this)" maxlength="4"/>
+                        </div>
+                        <div>
+                            <label for="avaliativa-semana3">Avaliativa semana 3:</label>
+                            <input type="number" class="input" name="avaliativa-semana3" id="avaliativa-semana3" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana3-error">
                                 <p>Insira um valor válido de 0 a 10</p>
                             </div>
-                        </p>
-                        <p>
-                            Avaliativa semana 4:
-                            <input type="number" class="input" name="avaliativa-semana4" id="avaliativa-semana4" onfocus="clearInput(this)" onchange="decimalValidation(this)" maxlength="4"/>
+                        </div>
+                        <div>
+                            <label for="avaliativa-semana4">Avaliativa semana 4:</label>
+                            <input type="number" class="input" name="avaliativa-semana4" id="avaliativa-semana4" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana4-error">
                                 <p>Insira um valor válido de 0 a 10</p>
                             </div>
-                        </p>
-                        <p>
-                            Avaliativa semana 5:
-                            <input type="number" class="input" name="avaliativa-semana5" id="avaliativa-semana5" onfocus="clearInput(this)" onchange="decimalValidation(this)" maxlength="4"/>
+                        </div>
+                        <div>
+                            <label for="avaliativa-semana5">Avaliativa semana 5:</label>
+                            <input type="number" class="input" name="avaliativa-semana5" id="avaliativa-semana5" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana5-error">
                                 <p>Insira um valor válido de 0 a 10</p>
                             </div>
-                        </p>
-                        <p>
-                            Avaliativa semana 6:
-                            <input type="number" class="input" name="avaliativa-semana6" id="avaliativa-semana6" onfocus="clearInput(this)" onchange="decimalValidation(this)" maxlength="4"/>
+                        </div>
+                        <div>
+                            <label for="avaliativa-semana6">Avaliativa semana 6:</label>
+                            <input type="number" class="input" name="avaliativa-semana6" id="avaliativa-semana6" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana6-error">
                                 <p>Insira um valor válido de 0 a 10</p>
                             </div>
-                        </p>
-                        <p>
-                            Avaliativa semana 7:
-                            <input type="number" class="input" name="avaliativa-semana7" id="avaliativa-semana7" onfocus="clearInput(this)" onchange="decimalValidation(this)" maxlength="4"/>
+                        </div>
+                        <div>
+                            <label for="avaliativa-semana7">Avaliativa semana 7:</label>
+                            <input type="number" class="input" name="avaliativa-semana7" id="avaliativa-semana7" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana7-error">
                                 <p>Insira um valor válido de 0 a 10</p>
                             </div>
-                        </p>
+                        </div>
                     </div>
                 </div>
 
                 <button type="button" class="botao" id="calcula-regular" onclick="calculaRegular()">Calcular</button>
+            </form>
 
-            </div>
-            <div id="media-exame" class="janela">
-                
+            <form id="media-exame" class="janela">
                 <div>
-                    <p id="exame-texto" class="texto">Insira sua <strong>média final</strong> que te deixou de exame</p>
-                    <input type="number" class="input" name="media-final-exame" id="media-final-exame" onfocus="clearInput(this)" onchange="decimalValidation(this)" maxlength="4"/>
+                    <label for="media-final-exame" class="texto">Insira sua <strong>média final</strong> que te deixou de exame</label>
+                    <input type="number" class="input" name="media-final-exame" id="media-final-exame" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="5" maxlength="4"/>
                     <div class="input-error" id="media-final-exame-error">
                         <p>Insira um valor válido de 0 a 5</p>
                     </div>
                 </div>
 
                 <div>
-                    <p class="texto">Insira a <strong>nota da prova de exame</strong></p>
-                    <input type="number" class="input" name="nota-prova-exame" id="nota-prova-exame" onfocus="clearInput(this)" onchange="decimalValidation(this)" maxlength="4"/>
+                    <label for="nota-prova-exame" class="texto">Insira a <strong>nota da prova de exame</strong></label>
+                    <input type="number" class="input" name="nota-prova-exame" id="nota-prova-exame" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
                     <div class="input-error" id="nota-prova-exame-error">
                         <p>Insira um valor válido de 0 a 10</p>
                     </div>
                 </div>
 
                 <button type="button" class="botao" id="calcula-exame" onclick="calculaExame()">Calcular</button>
+            </form>
 
-            </div>
             <div id="resultado" class="janela">
                 <h1 id="resultado-txt">Parabéns!</h1>
                 <h2 id="resultado-nota" >Média final: 10</h2>
