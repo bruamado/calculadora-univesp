@@ -231,6 +231,24 @@ footer p{
     text-align: center;
 }
 
+#contador-visitas {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+
+#contador-visitas p {
+    font-size: 16px;
+    align-self: center;
+    padding: 0 4px;
+}
+
+#contador-visitas a {
+    display: flex;
+    padding: 0 4px;
+}
+
 #social-links {
     font-size: 24px;
     margin: 12px;
