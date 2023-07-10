@@ -19,3 +19,5 @@
 - Média Exame: (**Média Final Regular** + **Prova Exame**) / 2
 
 - Média Avaliativas Semanais: (**Semana1*0,08** + **Semana2*0,12** + **Semana3*0,17** + **Semana4*0,17** + **Semana5*0,17** + **Semana6*0,17** + **Semana7*0,12** )
+
+- Arredondamento de média: >= 4,95 (<a href="https://atendimento.univesp.br/sae/portal_files/FAQ_Aluno_Por_assunto.pdf">FAQ Univesp</a>)
