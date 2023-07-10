@@ -2,6 +2,21 @@ function clearInput(element) {
     element.value = ""
 }
 
+function hideAllErrors() {
+    let errorElements = document.querySelectorAll(".input-error")
+    for (let i = 0; i < errorElements.length; i++) {
+        errorElements[i].setAttribute("style", "outline-color:red;border: 2px solid red;")
+    }
+}
+
+function clearAllInputs() {
+    let inputs = document.querySelectorAll(".input")
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = ""
+        inputs[i].setAttribute("style", "outline-color:revert;border:revert;")
+    }
+}
+
 function hideError(element) {
     element.setAttribute("style", "outline-color:revert;border:revert;")
     let errorElementId = "#"+element.id+"-error"
@@ -64,13 +79,11 @@ function exibeJanela(janela) {
             document.querySelector("#back").setAttribute("style", "display:none;")
             document.querySelector("#media-regular").setAttribute("style", "display:none;")
             document.querySelector("#media-exame").setAttribute("style", "display:none;")
-            let medias = document.querySelectorAll(".input")
-            for (let i = 0; i < medias.length; i++) {
-                medias[i].value = ""
-            }
             document.querySelector("#resultado").setAttribute("style", "display:none;")
             exibeJanela('semanais-esconde')
             document.querySelector("#inicio").setAttribute("style", "display:initial;")
+            hideAllErrors()
+            clearAllInputs()
             break
         case "exame":
             document.querySelector("#back").setAttribute("style", "display:block;")
@@ -171,15 +184,27 @@ function resultado(tipo, nota) {
     const resultadoTexto = document.querySelector("#resultado-txt")
     const resultadoNota = document.querySelector("#resultado-nota")
     const resultadoDesc = document.querySelector("#resultado-desc")
-    let mediaFinal = nota.toFixed(2)
+    
+    let mediaFinal
+    if (nota >= 4.5 && nota < 5) {
+        mediaFinal = nota.toFixed(2)
+    } else {
+        mediaFinal = nota.toFixed(1)
+    }
+
     resultadoNota.textContent = "Média final: " + mediaFinal.replace(".", ",")
-    if (nota >= 5) {
+
+    if (nota >= 5.0) {
         resultadoTexto.textContent = "Parabéns!!!"
-        resultadoNota.setAttribute("style", "color:green;")
+        resultadoNota.setAttribute("style", "color:green;text-shadow:initial;")
         resultadoDesc.textContent = "Você foi aprovado(a)!"
+    }else if (nota >= 4.95) {
+        resultadoTexto.textContent = "Na trave!!!"
+        resultadoNota.setAttribute("style", "color:yellow;text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;")
+        resultadoDesc.textContent = "Você não atingiu a média, mas é possível que sua nota seja arredondada para 5! Para mais informações, consulte o Manual do Aluno ou seu orientador de Polo."
     }else{
         resultadoTexto.textContent = "Que pena ..."
-        resultadoNota.setAttribute("style", "color:red;")
+        resultadoNota.setAttribute("style", "color:red;text-shadow:initial;")
         resultadoDesc.textContent = "Você ficou de "+ consequencia +"."
     }
 
