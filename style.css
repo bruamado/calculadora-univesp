@@ -4,26 +4,30 @@
     box-sizing: border-box;
   }
 
+:root {
+    --input-width: 64px;
+    --bg-url: url(./assets/bg-mobile.jpg);
+    --calcular-width: 150px;
+}
+
 body {
-    background: url(./assets/bg-mobile.jpg) top center/cover;
+    background: var(--bg-url) top center/cover;
     height: 100vh;
 }
 
 #calculadora-app {
     display: flex;
     position: relative;
-    /* justify-content: center; */
     align-items: center;
     flex-direction: column;
     border: 1px solid gray;
     border-radius: 0px 0px 34px 34px;
     margin: 64px 28px 0;
-    /* min-height: 60vh; */
     background-color: rgb(255, 255, 255);
 }
 
 .input {
-    width: 64px;
+    width: var(--input-width);
     height: 1.5em;
     text-align: center;
     font-weight: bold;
@@ -32,10 +36,22 @@ body {
     margin-top: 16px;
 }
 
+/* Remove as setas dos inputs */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 .botao {
     display: block;
     margin: 24px auto 24px;
     height: 50px;
+    max-width: 400px;
     font-size: large;
     font-weight: bold;
     border-radius: 10px;
@@ -43,12 +59,15 @@ body {
     padding: 0 12px;
 }
 
+.calcular {
+    width: var(--calcular-width);
+}
+
 .txt-button {
     border: none;
     background-color: inherit;
     padding: 0;
-    margin: 0;
-    /* padding: 14px 28px; */
+    margin: 0 auto;
     font-size: 16px;
     cursor: pointer;
     display: inline-block;
@@ -102,6 +121,7 @@ header img {
 #display {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 #back {
@@ -116,7 +136,6 @@ header img {
 
 /* Início */
 #inicio {
-    /* display: none; */
     display: block;
     padding-top: 56px;
 }
@@ -154,6 +173,7 @@ header img {
     border: 3px solid gray;
 }
 
+
 #inserir-individualmente {
     display: block;
     padding: 0px 30px;
@@ -171,8 +191,8 @@ header img {
 }
 
 #exibir-notas-individuais * {
-    outline: 3px solid gainsboro;
-    animation: slide-down 2s forwards;
+    animation: ease-in slidein 1s, ease-out 2s slideout forwards;
+    max-width: 300px;
 }
 
 #exibir-notas-individuais > div {
@@ -199,7 +219,6 @@ header img {
 }
 
 /* Resultado */
-
 #resultado {
     display: none;
     text-align: center;
@@ -263,10 +282,28 @@ footer p{
     text-decoration: none;
   }
 
+/* media queries */
+@media (min-width: 700px) {
+    :root {
+        --input-width: 74px;
+        --bg-url: url(./assets/bg-desktop.jpg);
+        --calcular-width: 200px;
+    }
+}
+
 /* animation */
-@keyframes slide-down {
+@keyframes slidein {
     from {
-        outline: 2px solid gainsboro;
+        outline: initial;
+    }
+    to {
+        outline: 1px solid gray;
+    }
+  }
+
+@keyframes slideout {
+    from {
+        outline: 1px solid gray;
     }
     to {
         outline: initial;
