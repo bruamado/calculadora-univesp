@@ -6,6 +6,7 @@
 
 :root {
     --input-width: 64px;
+    --input-error-maxwidth: 90%;
     --bg-url: url(./assets/bg-mobile.jpg);
     --calcular-width: 150px;
 }
@@ -87,7 +88,8 @@ input[type=number] {
 .input-error {
     display: none;
     background-color: red;
-    margin: 4px 40px;
+    margin: 4px auto;
+    max-width: var(--input-error-maxwidth);
 }
 
 .input-error p {
@@ -289,6 +291,7 @@ footer p{
         --input-width: 74px;
         --bg-url: url(./assets/bg-desktop.jpg);
         --calcular-width: 200px;
+        --input-error-maxwidth: 600px;
     }
 }
 
