@@ -18,11 +18,10 @@
             </h1>
             <img src="./assets/logo-univesp.png" alt="Logotipo da Universidade Virtual do Estado de São Paulo">
         </header>
+        <button id="back" onclick="exibeJanela('inicio')">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+        </button>
         <div id="display">
-            <button id="back">
-                <ion-icon name="arrow-back-outline" onclick="exibeJanela('inicio')"></ion-icon>
-            </button>
-
             <div id="inicio" class="janela">
                 <p class="texto">O que você deseja calcular?</p>
                 <button type="button" id="b-regular" class="botao" onclick="exibeJanela('regular')">Média Final REGULAR</button>

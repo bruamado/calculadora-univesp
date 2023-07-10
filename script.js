@@ -86,12 +86,12 @@ function exibeJanela(janela) {
             clearAllInputs()
             break
         case "exame":
-            document.querySelector("#back").setAttribute("style", "display:block;")
+            document.querySelector("#back").setAttribute("style", "display:inline;")
             document.querySelector("#inicio").setAttribute("style", "display:none;")
             document.querySelector("#media-exame").setAttribute("style", "display:block;")
             break
         case "regular":
-            document.querySelector("#back").setAttribute("style", "display:block;")
+            document.querySelector("#back").setAttribute("style", "display:inline;")
             document.querySelector("#inicio").setAttribute("style", "display:none;")
             document.querySelector("#media-regular").setAttribute("style", "display:block;")
             break

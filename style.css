@@ -9,6 +9,9 @@
     --input-error-maxwidth: 90%;
     --bg-url: url(./assets/bg-mobile.jpg);
     --calcular-width: 150px;
+    --back-size: 44px;
+    --btn-color: rgba(218, 218, 218, 1);
+    --btn-color-highlight: rgba(218, 218, 218, 0.5);
 }
 
 body {
@@ -50,6 +53,7 @@ input[type=number] {
 
 .botao {
     display: block;
+    background-color: var(--btn-color);
     margin: 24px auto 24px;
     height: 50px;
     max-width: 400px;
@@ -59,6 +63,13 @@ input[type=number] {
     border: 2px solid black;
     padding: 0 12px;
 }
+
+.botao:hover {
+    background-color: var(--btn-color-highlight);
+    transform:scale(1.3,1.3);
+    -webkit-transform:scale(1.3,1.3);
+    -moz-transform:scale(1.3,1.3);
+  }
 
 .calcular {
     width: var(--calcular-width);
@@ -123,17 +134,15 @@ header img {
 #display {
     display: flex;
     flex-direction: column;
-    width: 100%;
 }
 
 #back {
-    display: none;
     background: none;
     border: none;
     margin-right: auto;
-    font-size: 44px;
-    color: rgb(124, 124, 124);
-    padding: 32px 8px 0;
+    font-size: var(--back-size);
+    color: gray;
+    padding: 32px 5% 0;
 }
 
 /* Início */
@@ -236,8 +245,9 @@ header img {
 
 #resultado-nota {
     font-size: 36px;
-    margin: 40px 0;
+    margin: 40px auto;
     padding: 20px;
+    max-width: 500px;
     background-color: gainsboro;
     text-shadow:initial;
 }
@@ -292,8 +302,19 @@ footer p{
         --bg-url: url(./assets/bg-desktop.jpg);
         --calcular-width: 200px;
         --input-error-maxwidth: 600px;
+        --back-size: 80px;
     }
 }
+
+@media (hover: none) {
+    .botao:hover {
+        background-color: var(--btn-color);
+        transform: initial;
+        -webkit-transform: initial;
+        -moz-transform: initial;
+    }
+}
+
 
 /* animation */
 @keyframes slidein {
