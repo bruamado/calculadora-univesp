@@ -30,7 +30,7 @@
             <form id="media-regular" class="janela">
 
                 <div>
-                    <label for="nota-prova-regular" class="texto">Insira a <strong>nota da prova</strong></label>
+                    <label for="nota-prova-regular" class="texto">Insira a nota da <strong>prova regular</strong></label>
                     <input type="number" class="input" name="nota-prova-regular" id="nota-prova-regular" onfocus="clearInput(this)" pattern="^([1-9]\d*(\.|\,)\d*|0?(\.|\,)\d*[1-9]\d*|[0-9]\d*)$" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
                     <div class="input-error" id="nota-prova-regular-error">
                         <p>Insira um valor válido de 0 a 10</p>
@@ -104,15 +104,18 @@
 
             <form id="media-exame" class="janela">
                 <div>
-                    <label for="media-final-exame" class="texto">Insira sua <strong>média final</strong> que te deixou de exame</label>
+                    <label for="media-final-exame" class="texto hover-text">
+                        Insira a <strong>média final regular</strong> (que te deixou de exame)
+                    </label>
                     <input type="number" class="input" name="media-final-exame" id="media-final-exame" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="5" maxlength="4"/>
                     <div class="input-error" id="media-final-exame-error">
                         <p>Insira um valor válido de 0 a 5</p>
+                        <p id="media-final-exame-error-tip">Sua média final regular não pode ser maior ou igual a 5. Senão você não estaria de exame.</p>
                     </div>
                 </div>
 
                 <div>
-                    <label for="nota-prova-exame" class="texto">Insira a <strong>nota da prova de exame</strong></label>
+                    <label for="nota-prova-exame" class="texto">Insira a nota da <strong>prova de exame</strong></label>
                     <input type="number" class="input" name="nota-prova-exame" id="nota-prova-exame" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
                     <div class="input-error" id="nota-prova-exame-error">
                         <p>Insira um valor válido de 0 a 10</p>

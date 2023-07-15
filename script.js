@@ -22,6 +22,11 @@ function hideError(element) {
     let errorElementId = "#"+element.id+"-error"
     let errorElement = document.querySelector(errorElementId)
     errorElement.setAttribute("style", "display:none;")
+
+    if (element.id == "media-final-exame"){
+        const errorTip = document.querySelector("#media-final-exame-error-tip")
+        errorTip.setAttribute("style", "display:none;")
+    }
 }
 
 function showError(element) {
@@ -55,15 +60,17 @@ function decimalValidation(element) {
             return
         }
         
-        
+        // Só chega aqui, números >= 0
         let inputFloat = parseFloat(element.value).toFixed(2)
         if (element.name == "media-final-exame") { // Calculo de média final de exame
-            if (inputFloat < 0 || inputFloat >= 5) {
+            if (inputFloat >= 5) {
                 showError(element)
+                const errorTip = document.querySelector("#media-final-exame-error-tip")
+                errorTip.setAttribute("style", "display:inline;")
                 return
             }
         }else{
-            if (inputFloat < 0 || inputFloat > 10) {
+            if (inputFloat > 10) {
                 showError(element)
                 return
             }

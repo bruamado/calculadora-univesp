@@ -213,7 +213,12 @@ header img {
     text-align: center;
 }
 
-/* Calcular Média Regular */
+/* Calcular Média Exame */
+
+#media-final-exame-error-tip {
+    display: none;
+}
+
 #media-exame {
     display: none;
     text-align: center;
