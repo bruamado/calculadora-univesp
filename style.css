@@ -136,6 +136,7 @@ header img {
 }
 
 #back {
+    display: none;
     background: none;
     border: none;
     margin-right: auto;
