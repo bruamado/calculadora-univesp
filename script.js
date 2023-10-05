@@ -1,4 +1,41 @@
-var notas = {
+let avaliativas = {
+    1: null,
+    2: null,
+    3: null,
+    4: null,
+    5: null,
+    6: null,
+    7: null
+}
+
+let prova = {
+    regular: null,
+    exame: null
+}
+
+let media = {
+    avaliativas: null,
+    regular: null,
+    exame: null
+}
+
+function calcularAvaliativasSemanais() {
+    media.avaliativas = (avaliativas[1]*0.08) + (avaliativas[2]*0.12) + (avaliativas[3]*0.17) + (avaliativas[4]*0.17) + (avaliativas[5]*0.17) + (avaliativas[6]*0.17) + (avaliativas[7]*0.12)
+    return media.avaliativas
+}
+
+function calcularMediaFinalRegular() {
+    media.regular = (prova.regular * 0.6) + (media.avaliativas * 0.4)
+    return media.regular
+}
+
+function calcularMediaFinalExame() {
+    media.exame = (media.regular + prova.exame) / 2
+    return media.exame
+}
+
+
+/* var notas = {
     provaRegular: null,
     avaliativasMedia: null,
     avaliativa1: null,
@@ -35,17 +72,10 @@ var notas = {
         this.provaExame = null;
         this.mediaRegular = null;
     }
-};
+}; */
 
 function clearInput(element) {
     element.value = ""
-}
-
-function hideAllErrors() {
-    let errorElements = document.querySelectorAll(".input-error")
-    for (let i = 0; i < errorElements.length; i++) {
-        errorElements[i].setAttribute("style", "outline-color:red;border: 2px solid red;")
-    }
 }
 
 function clearAllInputs() {
@@ -65,6 +95,13 @@ function hideError(element) {
     if (element.id == "media-regular-exame"){
         const errorTip = document.querySelector("#media-regular-exame-error-tip")
         errorTip.setAttribute("style", "display:none;")
+    }
+}
+
+function hideAllErrors() {
+    let errorElements = document.querySelectorAll(".input-error")
+    for (let i = 0; i < errorElements.length; i++) {
+        errorElements[i].setAttribute("style", "outline-color:red;border: 2px solid red;")
     }
 }
 
@@ -99,7 +136,7 @@ function decimalValidation(element) {
             return
         }
         
-        // Só chega aqui, números >= 0
+        // Só chega aqui número >= 0
         let inputFloat = parseFloat(element.value).toFixed(2)
         if (element.name == "media-regular-exame") { // Cálculo de média final de exame
             if (inputFloat >= 5) {
@@ -164,10 +201,9 @@ function exibeJanela(janela) {
 }
 
 function calculaRegular() {
-    let notaAvaliativas
     let notasIndividuais = document.querySelector("#exibir-notas-individuais").getAttribute("style", "display")
     const notaProvaEl = document.querySelector("#nota-prova-regular")
-    notas.provaRegular = parseFloat(notaProvaEl.value)
+    prova.regular = parseFloat(notaProvaEl.value)
 
     if (validaNumero(notaProvaEl)){
         if (notasIndividuais == 'display:block;') {
@@ -181,23 +217,21 @@ function calculaRegular() {
             let semana6El = document.querySelector("#avaliativa-semana6")
             let semana7El = document.querySelector("#avaliativa-semana7")
             if (validaNumero(semana1El) && validaNumero(semana2El) && validaNumero(semana3El) && validaNumero(semana4El) && validaNumero(semana5El) && validaNumero(semana6El) && validaNumero(semana7El)) {
-                notas.avaliativa1 = parseFloat(semana1El.value)
-                notas.avaliativa2 = parseFloat(semana2El.value)
-                notas.avaliativa3 = parseFloat(semana3El.value)
-                notas.avaliativa4 = parseFloat(semana4El.value)
-                notas.avaliativa5 = parseFloat(semana5El.value)
-                notas.avaliativa6 = parseFloat(semana6El.value)
-                notas.avaliativa7 = parseFloat(semana7El.value)
-                notas.calcularAvaliativasSemanais()
-                notas.calcularMediaFinalRegular()
-                resultado("regular", notas.mediaFinalRegular)
+                avaliativas[1] = parseFloat(semana1El.value)
+                avaliativas[2] = parseFloat(semana2El.value)
+                avaliativas[3] = parseFloat(semana3El.value)
+                avaliativas[4] = parseFloat(semana4El.value)
+                avaliativas[5] = parseFloat(semana5El.value)
+                avaliativas[6] = parseFloat(semana6El.value)
+                avaliativas[7] = parseFloat(semana7El.value)
+                calcularAvaliativasSemanais()
+                resultado("regular", calcularMediaFinalRegular())
             }
         }else{
             let mediaSemanaEl = document.querySelector("#media-avaliativas-semanais")   
             if (validaNumero(mediaSemanaEl)) {
-                notas.avaliativasMedia = parseFloat(mediaSemanaEl.value)
-                notas.calcularMediaFinalRegular()
-                resultado("regular", notas.mediaFinalRegular)
+                media.avaliativas = parseFloat(mediaSemanaEl.value)
+                resultado("regular", calcularMediaFinalRegular())
             }
         }
     }
@@ -205,14 +239,13 @@ function calculaRegular() {
 
 function calculaExame() {
     let mediaRegularExameEl = document.querySelector("#media-regular-exame")
-    notas.mediaRegularExame = parseFloat(mediaRegularExameEl.value)
+    media.regular = parseFloat(mediaRegularExameEl.value)
 
     let provaExameEl = document.querySelector("#nota-prova-exame")
-    notas.provaExame = parseFloat(provaExameEl.value)
+    prova.exame = parseFloat(provaExameEl.value)
 
     if (validaNumero(mediaRegularExameEl) && validaNumero(provaExameEl)) {
-        notas.calcularMediaFinalExame()
-        resultado("exame", notas.mediaFinalExame)
+        resultado("exame", calcularMediaFinalExame())
     }
 }
 
