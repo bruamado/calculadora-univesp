@@ -20,4 +20,4 @@
 
 - Média Avaliativas Semanais: (**Semana1*0,08** + **Semana2*0,12** + **Semana3*0,17** + **Semana4*0,17** + **Semana5*0,17** + **Semana6*0,17** + **Semana7*0,12** )
 
-- Arredondamento de média: >= 4,95 (<a href="https://atendimento.univesp.br/sae/portal_files/FAQ_Aluno_Por_assunto.pdf" target="_blank" rel="noopener noreferrer">FAQ Univesp</a>)
+- Arredondamento de média: >= 4,95 (<a href="https://assets.univesp.br/portal-aluno/Normas_Academicas.pdf" target="_blank" rel="noopener noreferrer">Normas Acadêmicas UNIVESP</a>)
