@@ -1,3 +1,42 @@
+var notas = {
+    provaRegular: null,
+    avaliativasMedia: null,
+    avaliativa1: null,
+    avaliativa2: null,
+    avaliativa3: null,
+    avaliativa4: null,
+    avaliativa5: null,
+    avaliativa6: null,
+    avaliativa7: null,
+    mediaFinalRegular: null,
+    provaExame: null,
+    mediaRegularExame: null,
+    mediaFinalExame: null,
+    calcularAvaliativasSemanais: function () {
+        this.avaliativasMedia = (this.avaliativa1*0.08) + (this.avaliativa2*0.12) + (this.avaliativa3*0.17) + (this.avaliativa4*0.17) + (this.avaliativa5*0.17) + (this.avaliativa6*0.17) + (this.avaliativa7*0.12)
+    },
+    calcularMediaFinalRegular: function() {
+        this.mediaFinalRegular = (this.provaRegular * 0.6) + (this.avaliativasMedia * 0.4)
+    },
+    calcularMediaFinalExame: function() {
+        this.mediaFinalExame = (this.mediaRegularExame + this.provaExame) / 2
+    },
+    limparNotas: function () {
+        this.provaRegular = null;
+        this.avaliativasMedia = null;
+        this.avaliativa1 = null;
+        this.avaliativa2 = null;
+        this.avaliativa3 = null;
+        this.avaliativa4 = null;
+        this.avaliativa5 = null;
+        this.avaliativa6 = null;
+        this.avaliativa7 = null;
+        this.mediaFinalRegular = null;
+        this.provaExame = null;
+        this.mediaRegular = null;
+    }
+};
+
 function clearInput(element) {
     element.value = ""
 }
@@ -23,8 +62,8 @@ function hideError(element) {
     let errorElement = document.querySelector(errorElementId)
     errorElement.setAttribute("style", "display:none;")
 
-    if (element.id == "media-final-exame"){
-        const errorTip = document.querySelector("#media-final-exame-error-tip")
+    if (element.id == "media-regular-exame"){
+        const errorTip = document.querySelector("#media-regular-exame-error-tip")
         errorTip.setAttribute("style", "display:none;")
     }
 }
@@ -62,10 +101,10 @@ function decimalValidation(element) {
         
         // Só chega aqui, números >= 0
         let inputFloat = parseFloat(element.value).toFixed(2)
-        if (element.name == "media-final-exame") { // Calculo de média final de exame
+        if (element.name == "media-regular-exame") { // Cálculo de média final de exame
             if (inputFloat >= 5) {
                 showError(element)
-                const errorTip = document.querySelector("#media-final-exame-error-tip")
+                const errorTip = document.querySelector("#media-regular-exame-error-tip")
                 errorTip.setAttribute("style", "display:inline;")
                 return
             }
@@ -128,60 +167,52 @@ function calculaRegular() {
     let notaAvaliativas
     let notasIndividuais = document.querySelector("#exibir-notas-individuais").getAttribute("style", "display")
     const notaProvaEl = document.querySelector("#nota-prova-regular")
-    let notaProva = parseFloat(notaProvaEl.value)
+    notas.provaRegular = parseFloat(notaProvaEl.value)
 
     if (validaNumero(notaProvaEl)){
         if (notasIndividuais == 'display:block;') {
             /* Calcular a nota de cada semana
             antes de calcular a média final */
             let semana1El = document.querySelector("#avaliativa-semana1")
-            let semana1 = document.querySelector("#avaliativa-semana1").value
             let semana2El = document.querySelector("#avaliativa-semana2")
-            let semana2 = document.querySelector("#avaliativa-semana2").value
             let semana3El = document.querySelector("#avaliativa-semana3")
-            let semana3 = document.querySelector("#avaliativa-semana3").value
             let semana4El = document.querySelector("#avaliativa-semana4")
-            let semana4 = document.querySelector("#avaliativa-semana4").value
             let semana5El = document.querySelector("#avaliativa-semana5")
-            let semana5 = document.querySelector("#avaliativa-semana5").value
             let semana6El = document.querySelector("#avaliativa-semana6")
-            let semana6 = document.querySelector("#avaliativa-semana6").value
             let semana7El = document.querySelector("#avaliativa-semana7")
-            let semana7 = document.querySelector("#avaliativa-semana7").value
             if (validaNumero(semana1El) && validaNumero(semana2El) && validaNumero(semana3El) && validaNumero(semana4El) && validaNumero(semana5El) && validaNumero(semana6El) && validaNumero(semana7El)) {
-                semana1 = parseFloat(semana1)
-                semana2 = parseFloat(semana2)
-                semana3 = parseFloat(semana3)
-                semana4 = parseFloat(semana4)
-                semana5 = parseFloat(semana5)
-                semana6 = parseFloat(semana6)
-                semana7 = parseFloat(semana7)
-                notaAvaliativas = (semana1*0.08) + (semana2*0.12) + (semana3*0.17) + (semana4*0.17) + (semana5*0.17) + (semana6*0.17) + (semana7*0.12)
-                let mediaFinal = (notaProva * 0.6) + (notaAvaliativas * 0.4)
-                resultado("regular", mediaFinal)
+                notas.avaliativa1 = parseFloat(semana1El.value)
+                notas.avaliativa2 = parseFloat(semana2El.value)
+                notas.avaliativa3 = parseFloat(semana3El.value)
+                notas.avaliativa4 = parseFloat(semana4El.value)
+                notas.avaliativa5 = parseFloat(semana5El.value)
+                notas.avaliativa6 = parseFloat(semana6El.value)
+                notas.avaliativa7 = parseFloat(semana7El.value)
+                notas.calcularAvaliativasSemanais()
+                notas.calcularMediaFinalRegular()
+                resultado("regular", notas.mediaFinalRegular)
             }
         }else{
-            let mediaSemanaEl = document.querySelector("#media-avaliativas-semanais")
-            let mediaSemana = mediaSemanaEl.value        
+            let mediaSemanaEl = document.querySelector("#media-avaliativas-semanais")   
             if (validaNumero(mediaSemanaEl)) {
-                notaAvaliativas = parseFloat(mediaSemana)
-                let mediaFinal = (notaProva * 0.6) + (notaAvaliativas * 0.4)
-                resultado("regular", mediaFinal)
+                notas.avaliativasMedia = parseFloat(mediaSemanaEl.value)
+                notas.calcularMediaFinalRegular()
+                resultado("regular", notas.mediaFinalRegular)
             }
         }
     }
 }
 
 function calculaExame() {
-    let mediaFinalExameEl = document.querySelector("#media-final-exame")
-    let mediaFinalExame = parseFloat(mediaFinalExameEl.value)
+    let mediaRegularExameEl = document.querySelector("#media-regular-exame")
+    notas.mediaRegularExame = parseFloat(mediaRegularExameEl.value)
 
     let provaExameEl = document.querySelector("#nota-prova-exame")
-    let provaExame = parseFloat(provaExameEl.value)
+    notas.provaExame = parseFloat(provaExameEl.value)
 
-    if (validaNumero(mediaFinalExameEl) && validaNumero(provaExameEl)) {
-        let mediaFinal = (mediaFinalExame + provaExame) / 2
-        resultado("exame", mediaFinal)
+    if (validaNumero(mediaRegularExameEl) && validaNumero(provaExameEl)) {
+        notas.calcularMediaFinalExame()
+        resultado("exame", notas.mediaFinalExame)
     }
 }
 
