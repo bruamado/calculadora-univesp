@@ -34,46 +34,6 @@ function calcularMediaFinalExame() {
     return media.exame
 }
 
-
-/* var notas = {
-    provaRegular: null,
-    avaliativasMedia: null,
-    avaliativa1: null,
-    avaliativa2: null,
-    avaliativa3: null,
-    avaliativa4: null,
-    avaliativa5: null,
-    avaliativa6: null,
-    avaliativa7: null,
-    mediaFinalRegular: null,
-    provaExame: null,
-    mediaRegularExame: null,
-    mediaFinalExame: null,
-    calcularAvaliativasSemanais: function () {
-        this.avaliativasMedia = (this.avaliativa1*0.08) + (this.avaliativa2*0.12) + (this.avaliativa3*0.17) + (this.avaliativa4*0.17) + (this.avaliativa5*0.17) + (this.avaliativa6*0.17) + (this.avaliativa7*0.12)
-    },
-    calcularMediaFinalRegular: function() {
-        this.mediaFinalRegular = (this.provaRegular * 0.6) + (this.avaliativasMedia * 0.4)
-    },
-    calcularMediaFinalExame: function() {
-        this.mediaFinalExame = (this.mediaRegularExame + this.provaExame) / 2
-    },
-    limparNotas: function () {
-        this.provaRegular = null;
-        this.avaliativasMedia = null;
-        this.avaliativa1 = null;
-        this.avaliativa2 = null;
-        this.avaliativa3 = null;
-        this.avaliativa4 = null;
-        this.avaliativa5 = null;
-        this.avaliativa6 = null;
-        this.avaliativa7 = null;
-        this.mediaFinalRegular = null;
-        this.provaExame = null;
-        this.mediaRegular = null;
-    }
-}; */
-
 function clearInput(element) {
     element.value = ""
 }
