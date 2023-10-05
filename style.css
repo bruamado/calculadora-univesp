@@ -16,16 +16,20 @@
 
 body {
     background: var(--bg-url) top center/cover;
+    padding: 0 24px;
 }
 
 #calculadora-app {
     display: flex;
     position: relative;
+    width: 100%;
+    max-width: 800px;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     border: 1px solid gray;
     border-radius: 0px 0px 34px 34px;
-    margin: 64px 28px 0;
+    margin: 64px auto 0;
     background-color: rgb(255, 255, 255);
 }
 
