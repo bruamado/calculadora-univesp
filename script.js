@@ -19,19 +19,49 @@ let media = {
     exame: null
 }
 
+let simulacao = {
+    regular: null,  // Nota mínima necessária na prova regular para atingir média final
+    exame: null     // Nota mínima necessária na prova de exame para atingir média final
+}
+
+let pesos = {
+    mediaFinal: 5,      // Valor de média final
+    avaliativas: 0.4,   // Peso das avaliativas
+    prova: 0.6,         // Peso da prova presencial
+    semana1: 0.08,      // Peso de cada semana das avaliativas
+    semana2: 0.12,
+    semana3: 0.17,
+    semana4: 0.17,
+    semana5: 0.17,
+    semana6: 0.17,
+    semana7: 0.12
+}
+
 function calcularAvaliativasSemanais() {
-    media.avaliativas = (avaliativas[1]*0.08) + (avaliativas[2]*0.12) + (avaliativas[3]*0.17) + (avaliativas[4]*0.17) + (avaliativas[5]*0.17) + (avaliativas[6]*0.17) + (avaliativas[7]*0.12)
+    media.avaliativas = (avaliativas[1]*pesos.semana1) + (avaliativas[2]*pesos.semana2) + (avaliativas[3]*pesos.semana3) + (avaliativas[4]*pesos.semana4) + (avaliativas[5]*pesos.semana5) + (avaliativas[6]*pesos.semana6) + (avaliativas[7]*pesos.semana7)
     return media.avaliativas
+    
 }
 
 function calcularMediaFinalRegular() {
-    media.regular = (prova.regular * 0.6) + (media.avaliativas * 0.4)
+    media.regular = (prova.regular * pesos.prova) + (media.avaliativas * pesos.avaliativas)
     return media.regular
 }
 
 function calcularMediaFinalExame() {
     media.exame = (media.regular + prova.exame) / 2
     return media.exame
+}
+
+function simularRegular() {
+    //  Fórmula para calcular a nota mínima (prova) necessária para atingir a média final
+    simulacao.regular = (pesos.mediaFinal - (media.avaliativas * pesos.avaliativas)) / pesos.prova
+    if (simulacao.regular >= 4.5 && simulacao.regular < pesos.mediaFinal) {
+        simulacao.regular = simulacao.regular.toFixed(2)
+    } else {
+        simulacao.regular = simulacao.regular.toFixed(1)
+    }
+    return simulacao.regular
 }
 
 function clearInput(element) {
@@ -93,7 +123,7 @@ function decimalValidation(element) {
         var regex = /^([1-9]\d*(\.|\,)\d*|0?(\.|\,)\d*[1-9]\d*|[0-9]\d*)$/gm
         if (!(regex.test(element.value))) {
             showError(element)
-            return
+            return false
         }
         
         // Só chega aqui número >= 0
@@ -103,15 +133,16 @@ function decimalValidation(element) {
                 showError(element)
                 const errorTip = document.querySelector("#media-regular-exame-error-tip")
                 errorTip.setAttribute("style", "display:inline;")
-                return
+                return false
             }
         }else{
             if (inputFloat > 10) {
                 showError(element)
-                return
+                return false
             }
         }
         element.value = parseFloat(element.value).toFixed(2)
+        return true
     }
 }
 
@@ -123,7 +154,11 @@ function exibeJanela(janela) {
             document.querySelector("#media-regular").setAttribute("style", "display:none;")
             document.querySelector("#media-exame").setAttribute("style", "display:none;")
             document.querySelector("#resultado").setAttribute("style", "display:none;")
+            document.querySelector("#simula-regular").setAttribute("style", "display:none;")
+            document.querySelector("#simula-exame").setAttribute("style", "display:none;")
+            document.querySelector("#simula-regular-resultado-div").setAttribute("style", "display:none;")
             exibeJanela('semanais-esconde')
+            exibeJanela('semanais-esconde-simulador')
             document.querySelector("#inicio").setAttribute("style", "display:initial;")
             hideAllErrors()
             clearAllInputs()
@@ -138,25 +173,49 @@ function exibeJanela(janela) {
             document.querySelector("#inicio").setAttribute("style", "display:none;")
             document.querySelector("#media-regular").setAttribute("style", "display:block;")
             break
-        case "resultado":
-            document.querySelector("#inicio").setAttribute("style", "display:none;")
-            document.querySelector("#media-regular").setAttribute("style", "display:none;")
-            document.querySelector("#media-exame").setAttribute("style", "display:none;")
-            document.querySelector("#resultado").setAttribute("style", "display:block;")
-            break
         case "semanais-exibe":
             document.querySelector("#media-avaliativas-semanais").setAttribute("style", "display:none;")
             document.querySelector("#media-avaliativas-semanais-error").setAttribute("style", "display:none;")
             document.querySelector("#inserir-individualmente").setAttribute("style", "display:none;")
             document.querySelector("#exibir-notas-individuais").setAttribute("style", "display:block;")
             document.querySelector("#avaliativas-texto").innerHTML = "Insira individualmente a nota de cada <b>avaliativa semanal</b>"
-
             break
         case "semanais-esconde":
             document.querySelector("#media-avaliativas-semanais").setAttribute("style", "display:inline;")
             document.querySelector("#inserir-individualmente").setAttribute("style", "display:block;")
             document.querySelector("#exibir-notas-individuais").setAttribute("style", "display:none;")
             document.querySelector("#avaliativas-texto").innerHTML = "Insira sua média final das <strong>avaliativas semanais</strong>"
+            break
+        case "resultado":
+            document.querySelector("#inicio").setAttribute("style", "display:none;")
+            document.querySelector("#media-regular").setAttribute("style", "display:none;")
+            document.querySelector("#media-exame").setAttribute("style", "display:none;")
+            document.querySelector("#resultado").setAttribute("style", "display:block;")
+            break
+        case "simula-regular":
+            document.querySelector("#back").setAttribute("style", "display:inline;")
+            document.querySelector("#inicio").setAttribute("style", "display:none;")
+            document.querySelector("#simula-regular").setAttribute("style", "display:block;")
+            break
+        case "semanais-exibe-simulador":
+            document.querySelector("#media-avaliativas-semanais-simulador").setAttribute("style", "display:none;")
+            document.querySelector("#media-avaliativas-semanais-simulador-error").setAttribute("style", "display:none;")
+            document.querySelector("#inserir-individualmente-simulador").setAttribute("style", "display:none;")
+            document.querySelector("#simula-regular-resultado-div").setAttribute("style", "display:none;")
+            document.querySelector("#exibir-notas-individuais-simulador").setAttribute("style", "display:block;")
+            document.querySelector("#avaliativas-texto-simulador").innerHTML = "Insira individualmente a nota de cada <b>avaliativa semanal</b>"
+            break
+        case "semanais-esconde-simulador":
+            document.querySelector("#media-avaliativas-semanais-simulador").setAttribute("style", "display:inline;")
+            document.querySelector("#inserir-individualmente-simulador").setAttribute("style", "display:block;")
+            document.querySelector("#exibir-notas-individuais-simulador").setAttribute("style", "display:none;")
+            document.querySelector("#simula-regular-resultado-div").setAttribute("style", "display:none;")
+            document.querySelector("#avaliativas-texto-simulador").innerHTML = "Insira sua média final das <strong>avaliativas semanais</strong>"
+            break
+        case "simula-exame":
+            document.querySelector("#back").setAttribute("style", "display:inline;")
+            document.querySelector("#inicio").setAttribute("style", "display:none;")
+            document.querySelector("#simula-exame").setAttribute("style", "display:block;")
     }
 }
 
@@ -217,7 +276,7 @@ function resultado(tipo, nota) {
     const resultadoDesc = document.querySelector("#resultado-desc")
     
     let mediaFinal
-    if (nota >= 4.5 && nota < 5) {
+    if (nota >= 4.5 && nota < pesos.mediaFinal) {
         mediaFinal = nota.toFixed(2)
     } else {
         mediaFinal = nota.toFixed(1)
@@ -225,11 +284,11 @@ function resultado(tipo, nota) {
 
     resultadoNota.textContent = "Média final: " + mediaFinal.replace(".", ",")
 
-    if (nota >= 5.0) {
+    if (mediaFinal >= pesos.mediaFinal) {
         resultadoTexto.textContent = "Parabéns!!!"
         resultadoNota.setAttribute("style", "color:green;text-shadow:initial;")
         resultadoDesc.textContent = "Você foi aprovado(a)!"
-    }else if (nota >= 4.95) {
+    }else if (mediaFinal >= (pesos.mediaFinal - 0.05)) {
         resultadoTexto.textContent = "Na trave!!!"
         resultadoNota.setAttribute("style", "color:yellow;text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;")
         resultadoDesc.textContent = "Você não atingiu a média, mas é possível que sua nota seja arredondada para 5! Para mais informações, consulte o Manual do Aluno ou seu orientador de Polo."
@@ -239,4 +298,40 @@ function resultado(tipo, nota) {
         resultadoDesc.textContent = "Você ficou de "+ consequencia +"."
     }
 
+}
+
+function simulacaoRegular(element) {
+    if (decimalValidation(element) && validaNumero(element)) {
+        let simulaRegularResultado = document.querySelector("#simula-regular-resultado")
+        document.querySelector("#simula-regular-resultado-div").setAttribute("style", "display:none;") // Esconde o campo de resultado
+        if (element.id == "media-avaliativas-semanais-simulador"){
+            //  Aqui o usuario inseriu a média final das avaliativas
+            media.avaliativas = parseFloat(element.value)
+            simularRegular()
+            document.querySelector("#simula-regular-resultado-div").setAttribute("style", "display:block;") // Exibe o campo de resultado
+            simulaRegularResultado.textContent = simulacao.regular.replace(".", ",")
+        }
+        else {
+            let semana1El = document.querySelector("#avaliativa-semana1-simulador")
+            let semana2El = document.querySelector("#avaliativa-semana2-simulador")
+            let semana3El = document.querySelector("#avaliativa-semana3-simulador")
+            let semana4El = document.querySelector("#avaliativa-semana4-simulador")
+            let semana5El = document.querySelector("#avaliativa-semana5-simulador")
+            let semana6El = document.querySelector("#avaliativa-semana6-simulador")
+            let semana7El = document.querySelector("#avaliativa-semana7-simulador")
+            if ((semana1El.value && validaNumero(semana1El)) && (semana2El.value && validaNumero(semana2El)) && (semana3El.value && validaNumero(semana3El)) && (semana4El.value && validaNumero(semana4El)) && (semana5El.value && validaNumero(semana5El)) && (semana6El.value && validaNumero(semana6El)) && (semana7El.value && validaNumero(semana7El))) {
+                avaliativas[1] = parseFloat(semana1El.value)
+                avaliativas[2] = parseFloat(semana2El.value)
+                avaliativas[3] = parseFloat(semana3El.value)
+                avaliativas[4] = parseFloat(semana4El.value)
+                avaliativas[5] = parseFloat(semana5El.value)
+                avaliativas[6] = parseFloat(semana6El.value)
+                avaliativas[7] = parseFloat(semana7El.value)
+                calcularAvaliativasSemanais()
+                simularRegular()
+                document.querySelector("#simula-regular-resultado-div").setAttribute("style", "display:block;") // Exibe o campo de resultado
+                simulaRegularResultado.textContent = simulacao.regular.replace(".", ",")
+            }
+        }
+    }
 }

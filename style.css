@@ -161,7 +161,26 @@ header img {
 }
 
 #inicio button {
+    min-width: 80%;
+}
+
+#inicio-simulador {
+    margin: 0 auto;
+    padding: 8px;
     width: 80%;
+    border-radius: 0px 0px 34px 34px;
+    background-color: rgba(112, 112, 112, 25%);
+}
+
+#simulador-desc {
+    font-size: 1.2em;
+    margin: 8px auto 24px;
+}
+
+#novo {
+    display: inline;
+    font-family: 'Delicious Handrawn', cursive;
+    color: red;
 }
 
 /* Calcular Média Regular */
@@ -187,7 +206,6 @@ header img {
 #media-regular > button:focus-visible {
     border: 3px solid gray;
 }
-
 
 #inserir-individualmente {
     display: block;
@@ -259,6 +277,59 @@ header img {
     max-width: 500px;
     background-color: gainsboro;
     text-shadow:initial;
+}
+
+/* Simular média Regular */
+#simula-regular {
+    display: none;
+    text-align: center;
+}
+
+#inserir-individualmente-simulador {
+    display: block;
+    padding: 0px 30px;
+    text-decoration: underline;
+    line-height: 0.8;
+}
+
+#exibir-notas-individuais-simulador input {
+    display: inline;
+    margin: 4px;
+}
+
+#exibir-notas-individuais-simulador {
+    display: none;
+}
+
+#exibir-notas-individuais-simulador * {
+    animation: ease-in slidein 1s, ease-out 2s slideout forwards;
+    max-width: 300px;
+}
+
+#exibir-notas-individuais-simulador > div {
+    margin: 0 auto;
+}
+
+#exibir-notas-individuais-simulador input {
+    text-align: center;
+}
+
+#simula-regular-resultado-div {
+    display: none;
+    font-size: 24px;
+    color: white;
+    margin-top: 16px;
+    background-color: blue;
+}
+
+#simula-regular-resultado {
+    font-size: 64px;
+}
+
+/* Simular média Exame */
+#simula-exame {
+    display: none;
+    text-align: center;
 }
 
 footer {
