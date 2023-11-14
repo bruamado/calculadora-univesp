@@ -37,7 +37,7 @@
                     <button type="button" id="b-simulaExame" class="botao" onclick="exibeJanela('simula-exame')">Simular Exame</button>
                 </div>
             </div>
-            <form id="media-regular" class="janela">
+            <form id="media-regular" class="janela form-calcular">
 
                 <div>
                     <label for="nota-prova-regular" class="texto">Insira a nota da <strong>prova regular</strong></label>
@@ -58,49 +58,49 @@
                         <!-- <p id="recolher-semanas" onclick="exibeJanela('semanais-esconde')"><em>Recolher</em></p> -->
                         <ion-icon id="recolher-semanas" name="caret-up-outline" onclick="exibeJanela('semanais-esconde')"></ion-icon>
                         <div>
-                            <label for="avaliativa-semana1">Avaliativa semana 1:</label>
+                            <label for="avaliativa-semana1" class="txt-font">Avaliativa semana 1:</label>
                             <input type="number" class="input" name="avaliativa-semana1" id="avaliativa-semana1" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana1-error">
                                 <p>Insira um valor válido de 0 a 10</p>
                             </div>
                         </div>
                         <div>
-                            <label for="avaliativa-semana2">Avaliativa semana 2:</label>
+                            <label for="avaliativa-semana2" class="txt-font">Avaliativa semana 2:</label>
                             <input type="number" class="input" name="avaliativa-semana2" id="avaliativa-semana2" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana2-error">
                                 <p>Insira um valor válido de 0 a 10</p>
                             </div>
                         </div>
                         <div>
-                            <label for="avaliativa-semana3">Avaliativa semana 3:</label>
+                            <label for="avaliativa-semana3" class="txt-font">Avaliativa semana 3:</label>
                             <input type="number" class="input" name="avaliativa-semana3" id="avaliativa-semana3" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana3-error">
                                 <p>Insira um valor válido de 0 a 10</p>
                             </div>
                         </div>
                         <div>
-                            <label for="avaliativa-semana4">Avaliativa semana 4:</label>
+                            <label for="avaliativa-semana4" class="txt-font">Avaliativa semana 4:</label>
                             <input type="number" class="input" name="avaliativa-semana4" id="avaliativa-semana4" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana4-error">
                                 <p>Insira um valor válido de 0 a 10</p>
                             </div>
                         </div>
                         <div>
-                            <label for="avaliativa-semana5">Avaliativa semana 5:</label>
+                            <label for="avaliativa-semana5" class="txt-font">Avaliativa semana 5:</label>
                             <input type="number" class="input" name="avaliativa-semana5" id="avaliativa-semana5" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana5-error">
                                 <p>Insira um valor válido de 0 a 10</p>
                             </div>
                         </div>
                         <div>
-                            <label for="avaliativa-semana6">Avaliativa semana 6:</label>
+                            <label for="avaliativa-semana6" class="txt-font">Avaliativa semana 6:</label>
                             <input type="number" class="input" name="avaliativa-semana6" id="avaliativa-semana6" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana6-error">
                                 <p>Insira um valor válido de 0 a 10</p>
                             </div>
                         </div>
                         <div>
-                            <label for="avaliativa-semana7">Avaliativa semana 7:</label>
+                            <label for="avaliativa-semana7" class="txt-font">Avaliativa semana 7:</label>
                             <input type="number" class="input" name="avaliativa-semana7" id="avaliativa-semana7" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana7-error">
                                 <p>Insira um valor válido de 0 a 10</p>
@@ -112,7 +112,7 @@
                 <button type="button" class="botao calcular" id="calcula-regular" onclick="calculaRegular()">Calcular</button>
             </form>
 
-            <form id="media-exame" class="janela">
+            <form id="media-exame" class="janela form-calcular">
                 <div>
                     <label for="media-regular-exame" class="texto hover-text">
                         Insira a <strong>média final regular</strong> (que te deixou de exame)
@@ -146,49 +146,49 @@
                     <div id="exibir-notas-individuais-simulador">
                         <ion-icon id="recolher-semanas-simulador" name="caret-up-outline" onclick="exibeJanela('semanais-esconde-simulador')"></ion-icon>
                         <div>
-                            <label for="avaliativa-semana1-simulador">Avaliativa semana 1:</label>
+                            <label for="avaliativa-semana1-simulador" class="txt-font">Avaliativa semana 1:</label>
                             <input type="number" class="input" name="avaliativa-semana1-simulador" id="avaliativa-semana1-simulador" onfocus="clearInput(this)" onchange="simulacaoRegular(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana1-simulador-error">
                                 <p>Insira um valor válido de 0 a 10</p>
                             </div>
                         </div>
                         <div>
-                            <label for="avaliativa-semana2-simulador">Avaliativa semana 2:</label>
+                            <label for="avaliativa-semana2-simulador" class="txt-font">Avaliativa semana 2:</label>
                             <input type="number" class="input" name="avaliativa-semana2-simulador" id="avaliativa-semana2-simulador" onfocus="clearInput(this)" onchange="simulacaoRegular(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana2-simulador-error">
                                 <p>Insira um valor válido de 0 a 10</p>
                             </div>
                         </div>
                         <div>
-                            <label for="avaliativa-semana3-simulador">Avaliativa semana 3:</label>
+                            <label for="avaliativa-semana3-simulador" class="txt-font">Avaliativa semana 3:</label>
                             <input type="number" class="input" name="avaliativa-semana3-simulador" id="avaliativa-semana3-simulador" onfocus="clearInput(this)" onchange="simulacaoRegular(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana3-simulador-error">
                                 <p>Insira um valor válido de 0 a 10</p>
                             </div>
                         </div>
                         <div>
-                            <label for="avaliativa-semana4-simulador">Avaliativa semana 4:</label>
+                            <label for="avaliativa-semana4-simulador" class="txt-font">Avaliativa semana 4:</label>
                             <input type="number" class="input" name="avaliativa-semana4-simulador" id="avaliativa-semana4-simulador" onfocus="clearInput(this)" onchange="simulacaoRegular(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana4-simulador-error">
                                 <p>Insira um valor válido de 0 a 10</p>
                             </div>
                         </div>
                         <div>
-                            <label for="avaliativa-semana5-simulador">Avaliativa semana 5:</label>
+                            <label for="avaliativa-semana5-simulador" class="txt-font">Avaliativa semana 5:</label>
                             <input type="number" class="input" name="avaliativa-semana5-simulador" id="avaliativa-semana5-simulador" onfocus="clearInput(this)" onchange="simulacaoRegular(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana5-simulador-error">
                                 <p>Insira um valor válido de 0 a 10</p>
                             </div>
                         </div>
                         <div>
-                            <label for="avaliativa-semana6-simulador">Avaliativa semana 6:</label>
+                            <label for="avaliativa-semana6-simulador" class="txt-font">Avaliativa semana 6:</label>
                             <input type="number" class="input" name="avaliativa-semana6-simulador" id="avaliativa-semana6-simulador" onfocus="clearInput(this)" onchange="simulacaoRegular(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana6-simulador-error">
                                 <p>Insira um valor válido de 0 a 10</p>
                             </div>
                         </div>
                         <div>
-                            <label for="avaliativa-semana7-simulador">Avaliativa semana 7:</label>
+                            <label for="avaliativa-semana7-simulador" class="txt-font">Avaliativa semana 7:</label>
                             <input type="number" class="input" name="avaliativa-semana7-simulador" id="avaliativa-semana7-simulador" onfocus="clearInput(this)" onchange="simulacaoRegular(this)" min="0" max="10" maxlength="4"/>
                             <div class="input-error" id="avaliativa-semana7-simulador-error">
                                 <p>Insira um valor válido de 0 a 10</p>
@@ -197,7 +197,7 @@
                     </div>
                 </div>
                 <div id="dica-simula-regular">
-                    <p>(Insira a nota e aperte Enter)</p>
+                    <p class="txt-font">(Insira a nota e aperte Enter)</p>
                 </div>
                 <div id="simula-regular-resultado-div">
                     <p>Para passar, você precisa tirar essa nota na prova:</p>
@@ -205,7 +205,25 @@
                 </div>
             </form>
 
-            <form id="simula-exame" class="janela">
+            <form id="simula-exame" class="janela form-calcular">
+                <div>
+                    <label for="simula-media-exame" class="texto hover-text">
+                        Insira a <strong>média final regular</strong> (que te deixou de exame)
+                    </label>
+                    <input type="number" class="input" name="simula-media-exame" id="simula-media-exame" onfocus="clearInput(this)" onchange="simulacaoExame(this)" pattern="^([1-9]\d*(\.|\,)\d*|0?(\.|\,)\d*[1-9]\d*|[0-9]\d*)$" min="0" max="5" maxlength="4"/>
+                    <div class="input-error" id="simula-media-exame-error">
+                        <p>Insira um valor válido de 0 a 5</p>
+                        <p id="media-exame-error-tip-simulador">Sua média final regular não pode ser maior ou igual a 5. Senão você não estaria de exame.</p>
+                    </div>
+                    <input type="number" name="not_gonna_submit" id="hidden-input" disabled="disabled" value="invisible" />
+                </div>
+                <div id="dica-simula-exame">
+                    <p class="txt-font">(Insira a nota e aperte Enter)</p>
+                </div>
+                <div id="simula-exame-resultado-div">
+                    <p>Para passar, você precisa tirar essa nota na prova:</p>
+                    <p id="simula-exame-resultado"></p>
+                </div>
             </form>
 
             <div id="resultado" class="janela">
@@ -251,5 +269,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-

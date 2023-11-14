@@ -64,6 +64,17 @@ function simularRegular() {
     return simulacao.regular
 }
 
+function simularExame() {
+    //  Fórmula para calcular a nota mínima (prova) necessária para atingir a média final no exame
+    simulacao.exame = 2*pesos.mediaFinal - media.regular
+    if (simulacao.exame >= 4.5 && simulacao.exame < pesos.mediaFinal) {
+        simulacao.exame = simulacao.exame.toFixed(2)
+    } else {
+        simulacao.exame = simulacao.exame.toFixed(1)
+    }
+    return simulacao.exame
+}
+
 function clearInput(element) {
     element.value = ""
 }
@@ -81,9 +92,13 @@ function hideError(element) {
     let errorElementId = "#"+element.id+"-error"
     let errorElement = document.querySelector(errorElementId)
     errorElement.setAttribute("style", "display:none;")
-
     if (element.id == "media-regular-exame"){
         const errorTip = document.querySelector("#media-regular-exame-error-tip")
+        errorTip.setAttribute("style", "display:none;")
+    }
+
+    if (element.id == "simula-media-exame"){
+        const errorTip = document.querySelector("#media-exame-error-tip-simulador")
         errorTip.setAttribute("style", "display:none;")
     }
 }
@@ -128,10 +143,10 @@ function decimalValidation(element) {
         
         // Só chega aqui número >= 0
         let inputFloat = parseFloat(element.value).toFixed(2)
-        if (element.name == "media-regular-exame") { // Cálculo de média final de exame
+        if (element.name == "media-regular-exame" || element.name == "simula-media-exame") { // Cálculo de média final de exame
             if (inputFloat >= 5) {
                 showError(element)
-                const errorTip = document.querySelector("#media-regular-exame-error-tip")
+                const errorTip = element.name == "media-regular-exame" ? document.querySelector("#media-regular-exame-error-tip") : document.querySelector("#media-exame-error-tip-simulador")
                 errorTip.setAttribute("style", "display:inline;")
                 return false
             }
@@ -157,6 +172,7 @@ function exibeJanela(janela) {
             document.querySelector("#simula-regular").setAttribute("style", "display:none;")
             document.querySelector("#simula-exame").setAttribute("style", "display:none;")
             document.querySelector("#simula-regular-resultado-div").setAttribute("style", "display:none;")
+            document.querySelector("#simula-exame-resultado-div").setAttribute("style", "display:none;")
             exibeJanela('semanais-esconde')
             exibeJanela('semanais-esconde-simulador')
             document.querySelector("#inicio").setAttribute("style", "display:initial;")
@@ -333,5 +349,15 @@ function simulacaoRegular(element) {
                 simulaRegularResultado.textContent = simulacao.regular.replace(".", ",")
             }
         }
+    }
+}
+
+function simulacaoExame(element) {
+    if (decimalValidation(element) && validaNumero(element)) {
+        let simulaExameResultado = document.querySelector("#simula-exame-resultado")
+        media.regular = parseFloat(element.value)
+        simularExame()
+        document.querySelector("#simula-exame-resultado-div").setAttribute("style", "display:block;") // Exibe o campo de resultado
+        simulaExameResultado.textContent = simulacao.exame.replace(".", ",")
     }
 }

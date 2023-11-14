@@ -5,6 +5,7 @@
   }
 
 :root {
+    --font-size: 18px;
     --input-width: 64px;
     --input-error-maxwidth: 90%;
     --bg-url: url(./assets/bg-mobile.jpg);
@@ -54,6 +55,11 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
+.txt-font {
+    font-size: var(--font-size);
+    font-family: 'Kalam', cursive;
+}
+
 .botao {
     display: block;
     background-color: var(--btn-color);
@@ -76,6 +82,20 @@ input[type=number] {
 
 .calcular {
     width: var(--calcular-width);
+}
+
+.form-calcular {
+    display: none;
+    text-align: center;
+}
+
+.form-calcular div {
+    margin-bottom: 56px;
+}
+
+.form-calcular input {
+    display: block;
+    margin: 0 auto;
 }
 
 .txt-button {
@@ -184,7 +204,7 @@ header img {
 }
 
 /* Calcular Média Regular */
-#media-regular {
+/* #media-regular {
     display: none;
     text-align: center;
 }
@@ -196,7 +216,7 @@ header img {
 #media-regular input {
     display: block;
     margin: 0 auto;
-}
+} */
 
 #media-regular > div > button {
     margin-top: 0;
@@ -242,7 +262,7 @@ header img {
     display: none;
 }
 
-#media-exame {
+/* #media-exame {
     display: none;
     text-align: center;
 }
@@ -254,7 +274,7 @@ header img {
 #media-exame input {
     display: block;
     margin: 0 auto;
-}
+} */
 
 /* Resultado */
 #resultado {
@@ -332,6 +352,26 @@ header img {
     text-align: center;
 }
 
+#simula-exame > div {
+    margin-bottom: 12px;
+}
+
+#simula-exame-resultado-div {
+    display: none;
+    font-size: 24px;
+    color: white;
+    margin-top: 16px;
+    background-color: blue;
+}
+
+#hidden-input {
+    display: none;
+}
+
+#simula-exame-resultado {
+    font-size: 64px;
+}
+
 footer {
     margin: 10px;
     display: inline;
@@ -382,6 +422,7 @@ footer p{
         --bg-url: url(./assets/bg-desktop.jpg);
         --calcular-width: 200px;
         --input-error-maxwidth: 600px;
+        --font-size: 22px;
         --back-size: 80px;
     }
 }
