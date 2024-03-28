@@ -1,3 +1,5 @@
+$\color{red}{\textsf{Teste de texto colorido}}$
+
 <h1 align="center"> Calculadora de Média UNIVESP </h1>
 <h2 align="center">Acesse a calculadora: <a href="https://bruamado.github.io/calculadora-univesp/">https://bruamado.github.io/calculadora-univesp/</a></h2>
 <br>
