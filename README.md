@@ -1,4 +1,4 @@
-$\color{#800020}{\textsf{<h1> Teste </h1>}}$
+$\color{#800020}{\textsf{#Teste}}$
 
 <h1 align="center"> Calculadora de Média UNIVESP </h1>
 <h2 align="center">Acesse a calculadora: <a href="https://bruamado.github.io/calculadora-univesp/">https://bruamado.github.io/calculadora-univesp/</a></h2>
