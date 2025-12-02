@@ -316,11 +316,14 @@ function resultado(tipo, nota) {
             media.regular = nota
             const notaExame = simularExame()
             const spanBold = document.createElement("strong");
-            spanBold.textContent = notaExame;
-            resultadoDesc.append(document.createElement("br"));
-            resultadoDesc.append("E precisará de no mínimo ")
-            resultadoDesc.append(spanBold)
-            resultadoDesc.append(" na prova de exame para ser aprovado(a).")
+            spanBold.textContent = notaExame.replace(".", ",")
+            resultadoDesc.append(
+                document.createElement("br"),
+                document.createElement("br"),
+                `E precisará tirar `,
+                spanBold,
+                " na prova de exame para ser aprovado(a)."
+            )
         }
     }
 
