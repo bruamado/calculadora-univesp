@@ -312,6 +312,16 @@ function resultado(tipo, nota) {
         resultadoTexto.textContent = "Que pena ..."
         resultadoNota.setAttribute("style", "color:red;text-shadow:initial;")
         resultadoDesc.textContent = "Você ficou de "+ consequencia +"."
+        if(consequencia == "exame"){
+            media.regular = nota
+            const notaExame = simularExame()
+            const spanBold = document.createElement("strong");
+            spanBold.textContent = notaExame;
+            resultadoDesc.append(document.createElement("br"));
+            resultadoDesc.append("E precisará de no mínimo ")
+            resultadoDesc.append(spanBold)
+            resultadoDesc.append(" na prova de exame para ser aprovado(a).")
+        }
     }
 
 }
