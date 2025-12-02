@@ -1,47 +1,47 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 :root {
-    --font-size: 18px;
-    --input-width: 64px;
-    --input-error-maxwidth: 90%;
-    --bg-url: url(./assets/bg-mobile.jpg);
-    --calcular-width: 150px;
-    --back-size: 44px;
-    --btn-color: rgba(218, 218, 218, 1);
-    --btn-color-highlight: rgba(218, 218, 218, 0.5);
+  --font-size: 18px;
+  --input-width: 64px;
+  --input-error-maxwidth: 90%;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --calcular-width: 150px;
+  --back-size: 44px;
+  --btn-color: rgba(218, 218, 218, 1);
+  --btn-color-highlight: rgba(218, 218, 218, 0.5);
 }
 
 body {
-    background: var(--bg-url) top center/cover;
-    padding: 0 24px;
+  background: var(--bg-url) top center/cover;
+  padding: 0 24px;
 }
 
 #calculadora-app {
-    display: flex;
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    border: 1px solid gray;
-    border-radius: 0px 0px 34px 34px;
-    margin: 64px auto 0;
-    background-color: rgb(255, 255, 255);
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid gray;
+  border-radius: 0px 0px 34px 34px;
+  margin: 64px auto 0;
+  background-color: rgb(255, 255, 255);
 }
 
 .input {
-    width: var(--input-width);
-    height: 1.5em;
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.5em;
-    border-radius: 5px;
-    margin-top: 16px;
+  width: var(--input-width);
+  height: 1.5em;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
+  border-radius: 5px;
+  margin-top: 16px;
 }
 
 /* Remove as setas dos inputs */
@@ -51,156 +51,149 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 /* Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 .txt-font {
-    font-size: var(--font-size);
-    font-family: 'Kalam', cursive;
+  font-size: var(--font-size);
+  font-family: "Kalam", cursive;
 }
 
 .botao {
-    display: block;
-    background-color: var(--btn-color);
-    margin: 24px auto 24px;
-    height: 50px;
-    max-width: 400px;
-    font-size: large;
-    font-weight: bold;
-    border-radius: 10px;
-    border: 2px solid black;
-    padding: 0 12px;
+  display: block;
+  background-color: var(--btn-color);
+  margin: 24px auto 24px;
+  height: 50px;
+  max-width: 400px;
+  font-size: large;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid black;
+  padding: 0 12px;
 }
 
 .botao:hover {
-    background-color: var(--btn-color-highlight);
-    transform:scale(1.3,1.3);
-    -webkit-transform:scale(1.3,1.3);
-    -moz-transform:scale(1.3,1.3);
-  }
+  background-color: var(--btn-color-highlight);
+  transform: scale(1.3, 1.3);
+  -webkit-transform: scale(1.3, 1.3);
+  -moz-transform: scale(1.3, 1.3);
+}
 
 .calcular {
-    width: var(--calcular-width);
+  width: var(--calcular-width);
 }
 
 .form-calcular {
-    display: none;
-    text-align: center;
+  display: none;
+  text-align: center;
 }
 
 .form-calcular div {
-    margin-bottom: 56px;
+  margin-bottom: 56px;
 }
 
 .form-calcular input {
-    display: block;
-    margin: 0 auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .txt-button {
-    border: none;
-    background-color: inherit;
-    padding: 0;
-    margin: 0 auto;
-    font-size: 16px;
-    cursor: pointer;
-    display: inline-block;
+  border: none;
+  background-color: inherit;
+  padding: 0;
+  margin: 0 auto;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
 }
 
 .janela {
-    padding-bottom: 24px;
+  padding-bottom: 24px;
 }
 
 .texto {
-    font-size: 24px;
-    font-family: 'Kalam', cursive;
-    line-height: 1;
-    padding: 8px;
+  font-size: 24px;
+  font-family: "Kalam", cursive;
+  line-height: 1;
+  padding: 8px;
 }
 
 .input-error {
-    display: none;
-    background-color: red;
-    margin: 4px auto;
-    max-width: var(--input-error-maxwidth);
+  display: none;
+  background-color: red;
+  margin: 4px auto;
+  max-width: var(--input-error-maxwidth);
 }
 
 .input-error p {
-    color: white;
+  color: white;
 }
 
 header {
-    padding: 8px;
-    position: absolute;
-    display: flex;
-    top: -28px;
-    width: 101%;
-    background-color: black;
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
+  padding: 8px;
+  position: absolute;
+  display: flex;
+  top: -28px;
+  width: 101%;
+  background-color: black;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
 header h1 {
-    text-align: center;
-    font-size: 1.2em;
-    color: white;
-    padding: 0 8px;
+  text-align: center;
+  font-size: 1.2em;
+  color: white;
+  padding: 0 8px;
 }
 
 header img {
-    margin-left: auto;
+  margin-left: auto;
 }
 
-
 #display {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 #back {
-    display: none;
-    background: none;
-    border: none;
-    margin-right: auto;
-    font-size: var(--back-size);
-    color: gray;
-    padding: 32px 5% 0;
+  display: none;
+  background: none;
+  border: none;
+  margin-right: auto;
+  font-size: var(--back-size);
+  color: gray;
+  padding: 32px 5% 0;
 }
 
 /* Início */
 #inicio {
-    display: block;
-    padding-top: 56px;
+  display: block;
+  padding-top: 56px;
 }
 
 #inicio p {
-    text-align: center;
-    font-size: 2em;
+  text-align: center;
+  font-size: 2em;
 }
 
 #inicio button {
-    min-width: 80%;
+  min-width: 80%;
 }
 
 #inicio-simulador {
-    margin: 0 auto;
-    padding: 8px;
-    width: 80%;
-    border-radius: 0px 0px 34px 34px;
-    background-color: rgba(112, 112, 112, 25%);
+  margin: 0 auto;
+  padding: 8px;
+  width: 80%;
+  border-radius: 0px 0px 34px 34px;
+  background-color: rgba(112, 112, 112, 25%);
 }
 
 #simulador-desc {
-    font-size: 1.2em;
-    margin: 8px auto 24px;
-}
-
-#novo {
-    display: inline;
-    font-family: 'Delicious Handrawn', cursive;
-    color: red;
+  font-size: 1.2em;
+  margin: 8px auto 24px;
 }
 
 /* Calcular Média Regular */
@@ -219,47 +212,47 @@ header img {
 } */
 
 #media-regular > div > button {
-    margin-top: 0;
-    margin-bottom: 8px;
+  margin-top: 0;
+  margin-bottom: 8px;
 }
 
 #media-regular > button:focus-visible {
-    border: 3px solid gray;
+  border: 3px solid gray;
 }
 
 #inserir-individualmente {
-    display: block;
-    padding: 0px 30px;
-    text-decoration: underline;
-    line-height: 0.8;
+  display: block;
+  padding: 0px 30px;
+  text-decoration: underline;
+  line-height: 0.8;
 }
 
 #exibir-notas-individuais input {
-    display: inline;
-    margin: 4px;
+  display: inline;
+  margin: 4px;
 }
 
 #exibir-notas-individuais {
-    display: none;
+  display: none;
 }
 
 #exibir-notas-individuais * {
-    animation: ease-in slidein 1s, ease-out 2s slideout forwards;
-    max-width: 300px;
+  animation: ease-in slidein 1s, ease-out 2s slideout forwards;
+  max-width: 300px;
 }
 
 #exibir-notas-individuais > div {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 #exibir-notas-individuais input {
-    text-align: center;
+  text-align: center;
 }
 
 /* Calcular Média Exame */
 
 #media-regular-exame-error-tip {
-    display: none;
+  display: none;
 }
 
 /* #media-exame {
@@ -278,180 +271,179 @@ header img {
 
 /* Resultado */
 #resultado {
-    display: none;
-    text-align: center;
+  display: none;
+  text-align: center;
 }
 
 #resultado-txt {
-    font-family: 'Freehand', cursive;
+  font-family: "Freehand", cursive;
 }
 
 #resultado-desc {
-    font-size: 28px;
+  font-size: 28px;
 }
 
 #resultado-nota {
-    font-size: 36px;
-    margin: 40px auto;
-    padding: 20px;
-    max-width: 500px;
-    background-color: gainsboro;
-    text-shadow:initial;
+  font-size: 36px;
+  margin: 40px auto;
+  padding: 20px;
+  max-width: 500px;
+  background-color: gainsboro;
+  text-shadow: initial;
 }
 
 /* Simular média Regular */
 #simula-regular {
-    display: none;
-    text-align: center;
+  display: none;
+  text-align: center;
 }
 
 #inserir-individualmente-simulador {
-    display: block;
-    padding: 0px 30px;
-    text-decoration: underline;
-    line-height: 0.8;
+  display: block;
+  padding: 0px 30px;
+  text-decoration: underline;
+  line-height: 0.8;
 }
 
 #exibir-notas-individuais-simulador input {
-    display: inline;
-    margin: 4px;
+  display: inline;
+  margin: 4px;
 }
 
 #exibir-notas-individuais-simulador {
-    display: none;
+  display: none;
 }
 
 #exibir-notas-individuais-simulador * {
-    animation: ease-in slidein 1s, ease-out 2s slideout forwards;
-    max-width: 300px;
+  animation: ease-in slidein 1s, ease-out 2s slideout forwards;
+  max-width: 300px;
 }
 
 #exibir-notas-individuais-simulador > div {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 #exibir-notas-individuais-simulador input {
-    text-align: center;
+  text-align: center;
 }
 
 #simula-regular-resultado-div {
-    display: none;
-    font-size: 24px;
-    color: white;
-    margin-top: 16px;
-    background-color: blue;
+  display: none;
+  font-size: 24px;
+  color: white;
+  margin-top: 16px;
+  background-color: blue;
 }
 
 #simula-regular-resultado {
-    font-size: 64px;
+  font-size: 64px;
 }
 
 /* Simular média Exame */
 #simula-exame {
-    display: none;
-    text-align: center;
+  display: none;
+  text-align: center;
 }
 
 #simula-exame > div {
-    margin-bottom: 12px;
+  margin-bottom: 12px;
 }
 
 #simula-exame-resultado-div {
-    display: none;
-    font-size: 24px;
-    color: white;
-    margin-top: 16px;
-    background-color: blue;
+  display: none;
+  font-size: 24px;
+  color: white;
+  margin-top: 16px;
+  background-color: blue;
 }
 
 #hidden-input {
-    display: none;
+  display: none;
 }
 
 #simula-exame-resultado {
-    font-size: 64px;
+  font-size: 64px;
 }
 
 footer {
-    margin: 10px;
-    display: inline;
+  margin: 10px;
+  display: inline;
 }
 
-footer p{
-    font-family: 'Gamja Flower', cursive;
-    font-size: 24px;
-    text-align: center;
+footer p {
+  font-family: "Gamja Flower", cursive;
+  font-size: 24px;
+  text-align: center;
 }
 
 #contador-visitas {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
 }
 
 #contador-visitas p {
-    font-size: 16px;
-    align-self: center;
-    padding: 0 4px;
+  font-size: 16px;
+  align-self: center;
+  padding: 0 4px;
 }
 
 #contador-visitas a {
-    display: flex;
-    padding: 0 4px;
+  display: flex;
+  padding: 0 4px;
 }
 
 #social-links {
-    font-size: 24px;
-    margin: 12px;
-    text-align: center;
+  font-size: 24px;
+  margin: 12px;
+  text-align: center;
 }
 
 #social-links a {
-    text-align: center;
-    border-radius: 50%;
-    padding: 16px; 
-    color: black;
-    text-decoration: none;
-  }
+  text-align: center;
+  border-radius: 50%;
+  padding: 16px;
+  color: black;
+  text-decoration: none;
+}
 
 /* media queries */
 @media (min-width: 700px) {
-    :root {
-        --input-width: 74px;
-        --bg-url: url(./assets/bg-desktop.jpg);
-        --calcular-width: 200px;
-        --input-error-maxwidth: 600px;
-        --font-size: 22px;
-        --back-size: 80px;
-    }
+  :root {
+    --input-width: 74px;
+    --bg-url: url(./assets/bg-desktop.jpg);
+    --calcular-width: 200px;
+    --input-error-maxwidth: 600px;
+    --font-size: 22px;
+    --back-size: 80px;
+  }
 }
 
 @media (hover: none) {
-    .botao:hover {
-        background-color: var(--btn-color);
-        transform: initial;
-        -webkit-transform: initial;
-        -moz-transform: initial;
-    }
+  .botao:hover {
+    background-color: var(--btn-color);
+    transform: initial;
+    -webkit-transform: initial;
+    -moz-transform: initial;
+  }
 }
-
 
 /* animation */
 @keyframes slidein {
-    from {
-        outline: initial;
-    }
-    to {
-        outline: 1px solid gray;
-    }
+  from {
+    outline: initial;
   }
+  to {
+    outline: 1px solid gray;
+  }
+}
 
 @keyframes slideout {
-    from {
-        outline: 1px solid gray;
-    }
-    to {
-        outline: initial;
-    }
+  from {
+    outline: 1px solid gray;
   }
+  to {
+    outline: initial;
+  }
+}

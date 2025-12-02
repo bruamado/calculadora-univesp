@@ -1,281 +1,655 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
+  <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y16J53HN5C"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-Y16J53HN5C"
+    ></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-Y16J53HN5C');
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag("js", new Date())
+
+      gtag("config", "G-Y16J53HN5C")
     </script>
 
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Freehand&family=Gamja+Flower&family=Kalam:wght@300;400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Freehand&family=Gamja+Flower&family=Kalam:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Calculadora UNIVESP</title>
-    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
-</head>
-<body>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+  </head>
+  <body>
     <div id="calculadora-app">
-        <header>
-            <h1>
-                Calculadora de Média
-            </h1>
-            <img src="./assets/logo-univesp.png" alt="Logotipo da Universidade Virtual do Estado de São Paulo">
-        </header>
-        <button id="back" onclick="exibeJanela('inicio')">
-            <ion-icon name="arrow-back-outline"></ion-icon>
-        </button>
-        <div id="display">
-            <div id="inicio" class="janela">
-                <p class="texto">O que você deseja calcular?</p>
-                <button type="button" id="b-regular" class="botao" onclick="exibeJanela('regular')">Média Final Regular</button>
-                <button type="button" id="b-exame" class="botao" onclick="exibeJanela('exame')">Média Final Exame</button>
-                <div id="inicio-simulador">
-                    <p id="novo">NOVO</p>
-                    <p id="simulador-desc">Quer simular qual nota você precisa tirar na prova para passar?</p>
-                    <button type="button" id="b-simulaRegular" class="botao" onclick="exibeJanela('simula-regular')">Simular Regular</button>
-                    <button type="button" id="b-simulaExame" class="botao" onclick="exibeJanela('simula-exame')">Simular Exame</button>
-                </div>
-            </div>
-            <form id="media-regular" class="janela form-calcular">
-
-                <div>
-                    <label for="nota-prova-regular" class="texto">Insira a nota da <strong>prova regular</strong></label>
-                    <input type="number" class="input" name="nota-prova-regular" id="nota-prova-regular" onfocus="clearInput(this)" pattern="^([1-9]\d*(\.|\,)\d*|0?(\.|\,)\d*[1-9]\d*|[0-9]\d*)$" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
-                    <div class="input-error" id="nota-prova-regular-error">
-                        <p>Insira um valor válido de 0 a 10</p>
-                    </div>
-                </div>
-
-                <div>
-                    <label for="media-avaliativas-semanais" id="avaliativas-texto" class="texto">Insira sua média final das <strong>avaliativas semanais</strong></label>
-                    <button type="button" id="inserir-individualmente" class="txt-button" onclick="exibeJanela('semanais-exibe')"><em>ou clique aqui para inserir a nota de cada semana individualmente</em></button>
-                    <input type="number" class="input" name="media-avaliativas-semanais" id="media-avaliativas-semanais" onfocus="clearInput(this)" pattern="^([1-9]\d*(\.|\,)\d*|0?(\.|\,)\d*[1-9]\d*|[0-9]\d*)$" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
-                    <div class="input-error" id="media-avaliativas-semanais-error">
-                        <p>Insira um valor válido de 0 a 10</p>
-                    </div>
-                    <div id="exibir-notas-individuais">
-                        <!-- <p id="recolher-semanas" onclick="exibeJanela('semanais-esconde')"><em>Recolher</em></p> -->
-                        <ion-icon id="recolher-semanas" name="caret-up-outline" onclick="exibeJanela('semanais-esconde')"></ion-icon>
-                        <div>
-                            <label for="avaliativa-semana1" class="txt-font">Avaliativa semana 1:</label>
-                            <input type="number" class="input" name="avaliativa-semana1" id="avaliativa-semana1" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
-                            <div class="input-error" id="avaliativa-semana1-error">
-                                <p>Insira um valor válido de 0 a 10</p>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="avaliativa-semana2" class="txt-font">Avaliativa semana 2:</label>
-                            <input type="number" class="input" name="avaliativa-semana2" id="avaliativa-semana2" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
-                            <div class="input-error" id="avaliativa-semana2-error">
-                                <p>Insira um valor válido de 0 a 10</p>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="avaliativa-semana3" class="txt-font">Avaliativa semana 3:</label>
-                            <input type="number" class="input" name="avaliativa-semana3" id="avaliativa-semana3" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
-                            <div class="input-error" id="avaliativa-semana3-error">
-                                <p>Insira um valor válido de 0 a 10</p>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="avaliativa-semana4" class="txt-font">Avaliativa semana 4:</label>
-                            <input type="number" class="input" name="avaliativa-semana4" id="avaliativa-semana4" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
-                            <div class="input-error" id="avaliativa-semana4-error">
-                                <p>Insira um valor válido de 0 a 10</p>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="avaliativa-semana5" class="txt-font">Avaliativa semana 5:</label>
-                            <input type="number" class="input" name="avaliativa-semana5" id="avaliativa-semana5" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
-                            <div class="input-error" id="avaliativa-semana5-error">
-                                <p>Insira um valor válido de 0 a 10</p>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="avaliativa-semana6" class="txt-font">Avaliativa semana 6:</label>
-                            <input type="number" class="input" name="avaliativa-semana6" id="avaliativa-semana6" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
-                            <div class="input-error" id="avaliativa-semana6-error">
-                                <p>Insira um valor válido de 0 a 10</p>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="avaliativa-semana7" class="txt-font">Avaliativa semana 7:</label>
-                            <input type="number" class="input" name="avaliativa-semana7" id="avaliativa-semana7" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
-                            <div class="input-error" id="avaliativa-semana7-error">
-                                <p>Insira um valor válido de 0 a 10</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <button type="button" class="botao calcular" id="calcula-regular" onclick="calculaRegular()">Calcular</button>
-            </form>
-
-            <form id="media-exame" class="janela form-calcular">
-                <div>
-                    <label for="media-regular-exame" class="texto hover-text">
-                        Insira a <strong>média final regular</strong> (que te deixou de exame)
-                    </label>
-                    <input type="number" class="input" name="media-regular-exame" id="media-regular-exame" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="5" maxlength="4"/>
-                    <div class="input-error" id="media-regular-exame-error">
-                        <p>Insira um valor válido de 0 a 5</p>
-                        <p id="media-regular-exame-error-tip">Sua média final regular não pode ser maior ou igual a 5. Senão você não estaria de exame.</p>
-                    </div>
-                </div>
-
-                <div>
-                    <label for="nota-prova-exame" class="texto">Insira a nota da <strong>prova de exame</strong></label>
-                    <input type="number" class="input" name="nota-prova-exame" id="nota-prova-exame" onfocus="clearInput(this)" onchange="decimalValidation(this)" min="0" max="10" maxlength="4"/>
-                    <div class="input-error" id="nota-prova-exame-error">
-                        <p>Insira um valor válido de 0 a 10</p>
-                    </div>
-                </div>
-
-                <button type="button" class="botao calcular" id="calcula-exame" onclick="calculaExame()">Calcular</button>
-            </form>
-
-            <form id="simula-regular" class="janela">
-                <div>
-                    <label for="media-avaliativas-semanais-simulador" id="avaliativas-texto-simulador" class="texto">Insira sua média final das <strong>avaliativas semanais</strong></label>
-                    <button type="button" id="inserir-individualmente-simulador" class="txt-button" onclick="exibeJanela('semanais-exibe-simulador')"><em>ou clique aqui para inserir a nota de cada semana individualmente</em></button>
-                    <input type="number" class="input" name="media-avaliativas-semanais" id="media-avaliativas-semanais-simulador" onfocus="clearInput(this)" onchange="simulacaoRegular(this)" pattern="^([1-9]\d*(\.|\,)\d*|0?(\.|\,)\d*[1-9]\d*|[0-9]\d*)$" min="0" max="10" maxlength="4"/>
-                    <div class="input-error" id="media-avaliativas-semanais-simulador-error">
-                        <p>Insira um valor válido de 0 a 10</p>
-                    </div>
-                    <div id="exibir-notas-individuais-simulador">
-                        <ion-icon id="recolher-semanas-simulador" name="caret-up-outline" onclick="exibeJanela('semanais-esconde-simulador')"></ion-icon>
-                        <div>
-                            <label for="avaliativa-semana1-simulador" class="txt-font">Avaliativa semana 1:</label>
-                            <input type="number" class="input" name="avaliativa-semana1-simulador" id="avaliativa-semana1-simulador" onfocus="clearInput(this)" onchange="simulacaoRegular(this)" min="0" max="10" maxlength="4"/>
-                            <div class="input-error" id="avaliativa-semana1-simulador-error">
-                                <p>Insira um valor válido de 0 a 10</p>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="avaliativa-semana2-simulador" class="txt-font">Avaliativa semana 2:</label>
-                            <input type="number" class="input" name="avaliativa-semana2-simulador" id="avaliativa-semana2-simulador" onfocus="clearInput(this)" onchange="simulacaoRegular(this)" min="0" max="10" maxlength="4"/>
-                            <div class="input-error" id="avaliativa-semana2-simulador-error">
-                                <p>Insira um valor válido de 0 a 10</p>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="avaliativa-semana3-simulador" class="txt-font">Avaliativa semana 3:</label>
-                            <input type="number" class="input" name="avaliativa-semana3-simulador" id="avaliativa-semana3-simulador" onfocus="clearInput(this)" onchange="simulacaoRegular(this)" min="0" max="10" maxlength="4"/>
-                            <div class="input-error" id="avaliativa-semana3-simulador-error">
-                                <p>Insira um valor válido de 0 a 10</p>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="avaliativa-semana4-simulador" class="txt-font">Avaliativa semana 4:</label>
-                            <input type="number" class="input" name="avaliativa-semana4-simulador" id="avaliativa-semana4-simulador" onfocus="clearInput(this)" onchange="simulacaoRegular(this)" min="0" max="10" maxlength="4"/>
-                            <div class="input-error" id="avaliativa-semana4-simulador-error">
-                                <p>Insira um valor válido de 0 a 10</p>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="avaliativa-semana5-simulador" class="txt-font">Avaliativa semana 5:</label>
-                            <input type="number" class="input" name="avaliativa-semana5-simulador" id="avaliativa-semana5-simulador" onfocus="clearInput(this)" onchange="simulacaoRegular(this)" min="0" max="10" maxlength="4"/>
-                            <div class="input-error" id="avaliativa-semana5-simulador-error">
-                                <p>Insira um valor válido de 0 a 10</p>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="avaliativa-semana6-simulador" class="txt-font">Avaliativa semana 6:</label>
-                            <input type="number" class="input" name="avaliativa-semana6-simulador" id="avaliativa-semana6-simulador" onfocus="clearInput(this)" onchange="simulacaoRegular(this)" min="0" max="10" maxlength="4"/>
-                            <div class="input-error" id="avaliativa-semana6-simulador-error">
-                                <p>Insira um valor válido de 0 a 10</p>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="avaliativa-semana7-simulador" class="txt-font">Avaliativa semana 7:</label>
-                            <input type="number" class="input" name="avaliativa-semana7-simulador" id="avaliativa-semana7-simulador" onfocus="clearInput(this)" onchange="simulacaoRegular(this)" min="0" max="10" maxlength="4"/>
-                            <div class="input-error" id="avaliativa-semana7-simulador-error">
-                                <p>Insira um valor válido de 0 a 10</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="dica-simula-regular">
-                    <p class="txt-font">(Insira a nota e aperte Enter)</p>
-                </div>
-                <div id="simula-regular-resultado-div">
-                    <p>Para passar, você precisa tirar essa nota na prova:</p>
-                    <p id="simula-regular-resultado"></p>
-                </div>
-            </form>
-
-            <form id="simula-exame" class="janela form-calcular">
-                <div>
-                    <label for="simula-media-exame" class="texto hover-text">
-                        Insira a <strong>média final regular</strong> (que te deixou de exame)
-                    </label>
-                    <input type="number" class="input" name="simula-media-exame" id="simula-media-exame" onfocus="clearInput(this)" onchange="simulacaoExame(this)" pattern="^([1-9]\d*(\.|\,)\d*|0?(\.|\,)\d*[1-9]\d*|[0-9]\d*)$" min="0" max="5" maxlength="4"/>
-                    <div class="input-error" id="simula-media-exame-error">
-                        <p>Insira um valor válido de 0 a 5</p>
-                        <p id="media-exame-error-tip-simulador">Sua média final regular não pode ser maior ou igual a 5. Senão você não estaria de exame.</p>
-                    </div>
-                    <input type="number" name="not_gonna_submit" id="hidden-input" disabled="disabled" value="invisible" />
-                </div>
-                <div id="dica-simula-exame">
-                    <p class="txt-font">(Insira a nota e aperte Enter)</p>
-                </div>
-                <div id="simula-exame-resultado-div">
-                    <p>Para passar, você precisa tirar essa nota na prova:</p>
-                    <p id="simula-exame-resultado"></p>
-                </div>
-            </form>
-
-            <div id="resultado" class="janela">
-                <h1 id="resultado-txt">Parabéns!</h1>
-                <h2 id="resultado-nota" >Média final: 10</h2>
-                <p id="resultado-desc" class="texto">Você foi aprovado(a)!</p>
-            </div>
+      <header>
+        <h1>Calculadora de Média</h1>
+        <img
+          src="./assets/logo-univesp.png"
+          alt="Logotipo da Universidade Virtual do Estado de São Paulo"
+        />
+      </header>
+      <button id="back" onclick="exibeJanela('inicio')">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </button>
+      <div id="display">
+        <div id="inicio" class="janela">
+          <p class="texto">O que você deseja calcular?</p>
+          <button
+            type="button"
+            id="b-regular"
+            class="botao"
+            onclick="exibeJanela('regular')"
+          >
+            Média Final Regular
+          </button>
+          <button
+            type="button"
+            id="b-exame"
+            class="botao"
+            onclick="exibeJanela('exame')"
+          >
+            Média Final Exame
+          </button>
+          <div id="inicio-simulador">
+            <p id="simulador-desc">
+              Quer simular qual nota você precisa tirar na prova para passar?
+            </p>
+            <button
+              type="button"
+              id="b-simulaRegular"
+              class="botao"
+              onclick="exibeJanela('simula-regular')"
+            >
+              Simular Regular
+            </button>
+            <button
+              type="button"
+              id="b-simulaExame"
+              class="botao"
+              onclick="exibeJanela('simula-exame')"
+            >
+              Simular Exame
+            </button>
+          </div>
         </div>
+        <form id="media-regular" class="janela form-calcular">
+          <div>
+            <label for="nota-prova-regular" class="texto"
+              >Insira a nota da <strong>prova regular</strong></label
+            >
+            <input
+              type="number"
+              class="input"
+              name="nota-prova-regular"
+              id="nota-prova-regular"
+              onfocus="clearInput(this)"
+              pattern="^([1-9]\d*(\.|\,)\d*|0?(\.|\,)\d*[1-9]\d*|[0-9]\d*)$"
+              onchange="decimalValidation(this)"
+              min="0"
+              max="10"
+              maxlength="4"
+            />
+            <div class="input-error" id="nota-prova-regular-error">
+              <p>Insira um valor válido de 0 a 10</p>
+            </div>
+          </div>
+
+          <div>
+            <label
+              for="media-avaliativas-semanais"
+              id="avaliativas-texto"
+              class="texto"
+              >Insira sua média final das
+              <strong>avaliativas semanais</strong></label
+            >
+            <button
+              type="button"
+              id="inserir-individualmente"
+              class="txt-button"
+              onclick="exibeJanela('semanais-exibe')"
+            >
+              <em
+                >ou clique aqui para inserir a nota de cada semana
+                individualmente</em
+              >
+            </button>
+            <input
+              type="number"
+              class="input"
+              name="media-avaliativas-semanais"
+              id="media-avaliativas-semanais"
+              onfocus="clearInput(this)"
+              pattern="^([1-9]\d*(\.|\,)\d*|0?(\.|\,)\d*[1-9]\d*|[0-9]\d*)$"
+              onchange="decimalValidation(this)"
+              min="0"
+              max="10"
+              maxlength="4"
+            />
+            <div class="input-error" id="media-avaliativas-semanais-error">
+              <p>Insira um valor válido de 0 a 10</p>
+            </div>
+            <div id="exibir-notas-individuais">
+              <!-- <p id="recolher-semanas" onclick="exibeJanela('semanais-esconde')"><em>Recolher</em></p> -->
+              <ion-icon
+                id="recolher-semanas"
+                name="caret-up-outline"
+                onclick="exibeJanela('semanais-esconde')"
+              ></ion-icon>
+              <div>
+                <label for="avaliativa-semana1" class="txt-font"
+                  >Avaliativa semana 1:</label
+                >
+                <input
+                  type="number"
+                  class="input"
+                  name="avaliativa-semana1"
+                  id="avaliativa-semana1"
+                  onfocus="clearInput(this)"
+                  onchange="decimalValidation(this)"
+                  min="0"
+                  max="10"
+                  maxlength="4"
+                />
+                <div class="input-error" id="avaliativa-semana1-error">
+                  <p>Insira um valor válido de 0 a 10</p>
+                </div>
+              </div>
+              <div>
+                <label for="avaliativa-semana2" class="txt-font"
+                  >Avaliativa semana 2:</label
+                >
+                <input
+                  type="number"
+                  class="input"
+                  name="avaliativa-semana2"
+                  id="avaliativa-semana2"
+                  onfocus="clearInput(this)"
+                  onchange="decimalValidation(this)"
+                  min="0"
+                  max="10"
+                  maxlength="4"
+                />
+                <div class="input-error" id="avaliativa-semana2-error">
+                  <p>Insira um valor válido de 0 a 10</p>
+                </div>
+              </div>
+              <div>
+                <label for="avaliativa-semana3" class="txt-font"
+                  >Avaliativa semana 3:</label
+                >
+                <input
+                  type="number"
+                  class="input"
+                  name="avaliativa-semana3"
+                  id="avaliativa-semana3"
+                  onfocus="clearInput(this)"
+                  onchange="decimalValidation(this)"
+                  min="0"
+                  max="10"
+                  maxlength="4"
+                />
+                <div class="input-error" id="avaliativa-semana3-error">
+                  <p>Insira um valor válido de 0 a 10</p>
+                </div>
+              </div>
+              <div>
+                <label for="avaliativa-semana4" class="txt-font"
+                  >Avaliativa semana 4:</label
+                >
+                <input
+                  type="number"
+                  class="input"
+                  name="avaliativa-semana4"
+                  id="avaliativa-semana4"
+                  onfocus="clearInput(this)"
+                  onchange="decimalValidation(this)"
+                  min="0"
+                  max="10"
+                  maxlength="4"
+                />
+                <div class="input-error" id="avaliativa-semana4-error">
+                  <p>Insira um valor válido de 0 a 10</p>
+                </div>
+              </div>
+              <div>
+                <label for="avaliativa-semana5" class="txt-font"
+                  >Avaliativa semana 5:</label
+                >
+                <input
+                  type="number"
+                  class="input"
+                  name="avaliativa-semana5"
+                  id="avaliativa-semana5"
+                  onfocus="clearInput(this)"
+                  onchange="decimalValidation(this)"
+                  min="0"
+                  max="10"
+                  maxlength="4"
+                />
+                <div class="input-error" id="avaliativa-semana5-error">
+                  <p>Insira um valor válido de 0 a 10</p>
+                </div>
+              </div>
+              <div>
+                <label for="avaliativa-semana6" class="txt-font"
+                  >Avaliativa semana 6:</label
+                >
+                <input
+                  type="number"
+                  class="input"
+                  name="avaliativa-semana6"
+                  id="avaliativa-semana6"
+                  onfocus="clearInput(this)"
+                  onchange="decimalValidation(this)"
+                  min="0"
+                  max="10"
+                  maxlength="4"
+                />
+                <div class="input-error" id="avaliativa-semana6-error">
+                  <p>Insira um valor válido de 0 a 10</p>
+                </div>
+              </div>
+              <div>
+                <label for="avaliativa-semana7" class="txt-font"
+                  >Avaliativa semana 7:</label
+                >
+                <input
+                  type="number"
+                  class="input"
+                  name="avaliativa-semana7"
+                  id="avaliativa-semana7"
+                  onfocus="clearInput(this)"
+                  onchange="decimalValidation(this)"
+                  min="0"
+                  max="10"
+                  maxlength="4"
+                />
+                <div class="input-error" id="avaliativa-semana7-error">
+                  <p>Insira um valor válido de 0 a 10</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            class="botao calcular"
+            id="calcula-regular"
+            onclick="calculaRegular()"
+          >
+            Calcular
+          </button>
+        </form>
+
+        <form id="media-exame" class="janela form-calcular">
+          <div>
+            <label for="media-regular-exame" class="texto hover-text">
+              Insira a <strong>média final regular</strong> (que te deixou de
+              exame)
+            </label>
+            <input
+              type="number"
+              class="input"
+              name="media-regular-exame"
+              id="media-regular-exame"
+              onfocus="clearInput(this)"
+              onchange="decimalValidation(this)"
+              min="0"
+              max="5"
+              maxlength="4"
+            />
+            <div class="input-error" id="media-regular-exame-error">
+              <p>Insira um valor válido de 0 a 5</p>
+              <p id="media-regular-exame-error-tip">
+                Sua média final regular não pode ser maior ou igual a 5. Senão
+                você não estaria de exame.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <label for="nota-prova-exame" class="texto"
+              >Insira a nota da <strong>prova de exame</strong></label
+            >
+            <input
+              type="number"
+              class="input"
+              name="nota-prova-exame"
+              id="nota-prova-exame"
+              onfocus="clearInput(this)"
+              onchange="decimalValidation(this)"
+              min="0"
+              max="10"
+              maxlength="4"
+            />
+            <div class="input-error" id="nota-prova-exame-error">
+              <p>Insira um valor válido de 0 a 10</p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            class="botao calcular"
+            id="calcula-exame"
+            onclick="calculaExame()"
+          >
+            Calcular
+          </button>
+        </form>
+
+        <form id="simula-regular" class="janela">
+          <div>
+            <label
+              for="media-avaliativas-semanais-simulador"
+              id="avaliativas-texto-simulador"
+              class="texto"
+              >Insira sua média final das
+              <strong>avaliativas semanais</strong></label
+            >
+            <button
+              type="button"
+              id="inserir-individualmente-simulador"
+              class="txt-button"
+              onclick="exibeJanela('semanais-exibe-simulador')"
+            >
+              <em
+                >ou clique aqui para inserir a nota de cada semana
+                individualmente</em
+              >
+            </button>
+            <input
+              type="number"
+              class="input"
+              name="media-avaliativas-semanais"
+              id="media-avaliativas-semanais-simulador"
+              onfocus="clearInput(this)"
+              onchange="simulacaoRegular(this)"
+              pattern="^([1-9]\d*(\.|\,)\d*|0?(\.|\,)\d*[1-9]\d*|[0-9]\d*)$"
+              min="0"
+              max="10"
+              maxlength="4"
+            />
+            <div
+              class="input-error"
+              id="media-avaliativas-semanais-simulador-error"
+            >
+              <p>Insira um valor válido de 0 a 10</p>
+            </div>
+            <div id="exibir-notas-individuais-simulador">
+              <ion-icon
+                id="recolher-semanas-simulador"
+                name="caret-up-outline"
+                onclick="exibeJanela('semanais-esconde-simulador')"
+              ></ion-icon>
+              <div>
+                <label for="avaliativa-semana1-simulador" class="txt-font"
+                  >Avaliativa semana 1:</label
+                >
+                <input
+                  type="number"
+                  class="input"
+                  name="avaliativa-semana1-simulador"
+                  id="avaliativa-semana1-simulador"
+                  onfocus="clearInput(this)"
+                  onchange="simulacaoRegular(this)"
+                  min="0"
+                  max="10"
+                  maxlength="4"
+                />
+                <div
+                  class="input-error"
+                  id="avaliativa-semana1-simulador-error"
+                >
+                  <p>Insira um valor válido de 0 a 10</p>
+                </div>
+              </div>
+              <div>
+                <label for="avaliativa-semana2-simulador" class="txt-font"
+                  >Avaliativa semana 2:</label
+                >
+                <input
+                  type="number"
+                  class="input"
+                  name="avaliativa-semana2-simulador"
+                  id="avaliativa-semana2-simulador"
+                  onfocus="clearInput(this)"
+                  onchange="simulacaoRegular(this)"
+                  min="0"
+                  max="10"
+                  maxlength="4"
+                />
+                <div
+                  class="input-error"
+                  id="avaliativa-semana2-simulador-error"
+                >
+                  <p>Insira um valor válido de 0 a 10</p>
+                </div>
+              </div>
+              <div>
+                <label for="avaliativa-semana3-simulador" class="txt-font"
+                  >Avaliativa semana 3:</label
+                >
+                <input
+                  type="number"
+                  class="input"
+                  name="avaliativa-semana3-simulador"
+                  id="avaliativa-semana3-simulador"
+                  onfocus="clearInput(this)"
+                  onchange="simulacaoRegular(this)"
+                  min="0"
+                  max="10"
+                  maxlength="4"
+                />
+                <div
+                  class="input-error"
+                  id="avaliativa-semana3-simulador-error"
+                >
+                  <p>Insira um valor válido de 0 a 10</p>
+                </div>
+              </div>
+              <div>
+                <label for="avaliativa-semana4-simulador" class="txt-font"
+                  >Avaliativa semana 4:</label
+                >
+                <input
+                  type="number"
+                  class="input"
+                  name="avaliativa-semana4-simulador"
+                  id="avaliativa-semana4-simulador"
+                  onfocus="clearInput(this)"
+                  onchange="simulacaoRegular(this)"
+                  min="0"
+                  max="10"
+                  maxlength="4"
+                />
+                <div
+                  class="input-error"
+                  id="avaliativa-semana4-simulador-error"
+                >
+                  <p>Insira um valor válido de 0 a 10</p>
+                </div>
+              </div>
+              <div>
+                <label for="avaliativa-semana5-simulador" class="txt-font"
+                  >Avaliativa semana 5:</label
+                >
+                <input
+                  type="number"
+                  class="input"
+                  name="avaliativa-semana5-simulador"
+                  id="avaliativa-semana5-simulador"
+                  onfocus="clearInput(this)"
+                  onchange="simulacaoRegular(this)"
+                  min="0"
+                  max="10"
+                  maxlength="4"
+                />
+                <div
+                  class="input-error"
+                  id="avaliativa-semana5-simulador-error"
+                >
+                  <p>Insira um valor válido de 0 a 10</p>
+                </div>
+              </div>
+              <div>
+                <label for="avaliativa-semana6-simulador" class="txt-font"
+                  >Avaliativa semana 6:</label
+                >
+                <input
+                  type="number"
+                  class="input"
+                  name="avaliativa-semana6-simulador"
+                  id="avaliativa-semana6-simulador"
+                  onfocus="clearInput(this)"
+                  onchange="simulacaoRegular(this)"
+                  min="0"
+                  max="10"
+                  maxlength="4"
+                />
+                <div
+                  class="input-error"
+                  id="avaliativa-semana6-simulador-error"
+                >
+                  <p>Insira um valor válido de 0 a 10</p>
+                </div>
+              </div>
+              <div>
+                <label for="avaliativa-semana7-simulador" class="txt-font"
+                  >Avaliativa semana 7:</label
+                >
+                <input
+                  type="number"
+                  class="input"
+                  name="avaliativa-semana7-simulador"
+                  id="avaliativa-semana7-simulador"
+                  onfocus="clearInput(this)"
+                  onchange="simulacaoRegular(this)"
+                  min="0"
+                  max="10"
+                  maxlength="4"
+                />
+                <div
+                  class="input-error"
+                  id="avaliativa-semana7-simulador-error"
+                >
+                  <p>Insira um valor válido de 0 a 10</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="dica-simula-regular">
+            <p class="txt-font">(Insira a nota e aperte Enter)</p>
+          </div>
+          <div id="simula-regular-resultado-div">
+            <p>Para passar, você precisa tirar essa nota na prova:</p>
+            <p id="simula-regular-resultado"></p>
+          </div>
+        </form>
+
+        <form id="simula-exame" class="janela form-calcular">
+          <div>
+            <label for="simula-media-exame" class="texto hover-text">
+              Insira a <strong>média final regular</strong> (que te deixou de
+              exame)
+            </label>
+            <input
+              type="number"
+              class="input"
+              name="simula-media-exame"
+              id="simula-media-exame"
+              onfocus="clearInput(this)"
+              onchange="simulacaoExame(this)"
+              pattern="^([1-9]\d*(\.|\,)\d*|0?(\.|\,)\d*[1-9]\d*|[0-9]\d*)$"
+              min="0"
+              max="5"
+              maxlength="4"
+            />
+            <div class="input-error" id="simula-media-exame-error">
+              <p>Insira um valor válido de 0 a 5</p>
+              <p id="media-exame-error-tip-simulador">
+                Sua média final regular não pode ser maior ou igual a 5. Senão
+                você não estaria de exame.
+              </p>
+            </div>
+            <input
+              type="number"
+              name="not_gonna_submit"
+              id="hidden-input"
+              disabled="disabled"
+              value="invisible"
+            />
+          </div>
+          <div id="dica-simula-exame">
+            <p class="txt-font">(Insira a nota e aperte Enter)</p>
+          </div>
+          <div id="simula-exame-resultado-div">
+            <p>Para passar, você precisa tirar essa nota na prova:</p>
+            <p id="simula-exame-resultado"></p>
+          </div>
+        </form>
+
+        <div id="resultado" class="janela">
+          <h1 id="resultado-txt">Parabéns!</h1>
+          <h2 id="resultado-nota">Média final: 10</h2>
+          <p id="resultado-desc" class="texto">Você foi aprovado(a)!</p>
+        </div>
+      </div>
     </div>
     <footer>
-        <p><em>Desenvolvido por Bruno Amado</em></p>
-        <div id="social-links">
-            <a
-              href="https://github.com/bruamado/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ion-icon name="logo-github"></ion-icon>
-            </a>
-            <a
-              href="https://linkedin.com/in/bruamado"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </a>
-            <a
-              href="https://discord.com/users/450798739771097088"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ion-icon name="logo-discord"></ion-icon>
-            </a>
-          </div>
-          <!-- <div id="contador-visitas">
+      <p><em>Desenvolvido por Bruno Amado</em></p>
+      <div id="social-links">
+        <a
+          href="https://github.com/bruamado/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <ion-icon name="logo-github"></ion-icon>
+        </a>
+        <a
+          href="https://linkedin.com/in/bruamado"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a>
+        <a
+          href="https://discord.com/users/450798739771097088"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <ion-icon name="logo-discord"></ion-icon>
+        </a>
+      </div>
+      <!-- <div id="contador-visitas">
             <p>Visitas:</p>
             <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1049921/t/3"></script>
         </div> -->
     </footer>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
